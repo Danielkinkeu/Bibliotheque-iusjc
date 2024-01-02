@@ -1,24 +1,28 @@
 package com.king.Bibliotheque.Models;
 
-import com.king.Bibliotheque.RoleType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+import java.time.Instant;
+
 @Getter
 @Setter
 @AllArgsConstructor
+@Table(name = "validation")
+@Entity
 @NoArgsConstructor
-@Table(name = "role")
-public class Role {
-
+public class Validation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @Enumerated(EnumType.STRING)
-    private RoleType title;
+    private Instant creation;
+    private Instant activation;
+    private Instant expiration;
+    private String code;
+    @OneToOne(cascade = CascadeType.ALL)
+    private User user;
 
 }

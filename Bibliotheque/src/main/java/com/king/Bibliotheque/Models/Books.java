@@ -22,11 +22,9 @@ public class Books {
     private String authorName;
     private String edition;
     private Date publicationDate;
-    private static int quantity;
+    private String file;
 
     @OneToMany
     List<BookCopy> copyList;
-
-
 
 }

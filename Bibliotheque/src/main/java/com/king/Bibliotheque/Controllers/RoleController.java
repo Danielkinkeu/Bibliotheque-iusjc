@@ -17,12 +17,12 @@ public class RoleController {
         this.roleService = roleService;
     }
 
-    @ResponseStatus(value = HttpStatus.CREATED)
-    @PostMapping(consumes = APPLICATION_JSON_VALUE)
-    public void addRole(@RequestBody Role role){
-        this.roleService.addRole(role);
-    }
-    @GetMapping(produces = APPLICATION_JSON_VALUE)
+   // @ResponseStatus(value = HttpStatus.CREATED)
+    //@PostMapping(consumes = APPLICATION_JSON_VALUE)
+    //public void addRole(@RequestBody Role role){
+    //    this.roleService.addRole(role);
+    //}
+    @GetMapping(path = "/", produces = APPLICATION_JSON_VALUE)
     public List<Role> getRole(){
         return this.roleService.search();
     }
@@ -30,5 +30,15 @@ public class RoleController {
     @GetMapping(path = "{id}", produces = APPLICATION_JSON_VALUE)
     public Role getRoleById(@PathVariable int id){
         return this.roleService.getRoleById(id);
+    }
+
+    @PutMapping(path = "{id}" ,consumes = APPLICATION_JSON_VALUE)
+    public Role updateRole(@PathVariable int id, @RequestBody Role updatedRole) {
+        return roleService.updateRoleDetails(id, updatedRole);
+    }
+
+    @DeleteMapping(path = "{id}")
+    public void deleteRole(@PathVariable int id) {
+        roleService.deleteRole(id);
     }
 }

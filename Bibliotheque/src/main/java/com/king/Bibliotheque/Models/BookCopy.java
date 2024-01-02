@@ -23,4 +23,6 @@ public class BookCopy {
     private String edition;
     private Date publicationDate;
     private Boolean status;
+    @ManyToOne
+    private Books books;
 }

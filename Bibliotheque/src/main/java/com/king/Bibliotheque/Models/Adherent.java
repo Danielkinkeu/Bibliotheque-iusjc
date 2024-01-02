@@ -21,7 +21,4 @@ public class Adherent extends User {
     private Integer numberLoansAuthorized;
     private Integer maximumLoanDuration;
 
-    public Adherent(Integer id, String name, String subName, String email, Date birthDate, Number phone, String address) {
-        super(id, name, subName, email, birthDate, phone, address);
-    }
 }
