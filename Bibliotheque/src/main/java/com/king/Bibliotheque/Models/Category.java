@@ -2,6 +2,7 @@ package com.king.Bibliotheque.Models;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @Table(name = "category")
+@NoArgsConstructor
 public class Category {
 
     @Id

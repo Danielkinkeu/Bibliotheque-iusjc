@@ -45,6 +45,7 @@ public class ConfigurationSecuriteApplication {
                                             .requestMatchers(POST,"/inscription").permitAll()
                                             .requestMatchers(POST,"/validation").permitAll()
                                             .requestMatchers(POST,"/connexion").permitAll()
+                                           // .requestMatchers(POST,"/category").permitAll()
                                              .anyRequest().authenticated()
                         )
                         .sessionManagement(httpSecuritySessionManagementConfigurer ->
