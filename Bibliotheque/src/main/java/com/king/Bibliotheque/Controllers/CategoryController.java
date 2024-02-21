@@ -17,7 +17,7 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-     @ResponseStatus(value = HttpStatus.CREATED)
+    @ResponseStatus(value = HttpStatus.CREATED)
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
     public void addCategory(@RequestBody Category category){
         this.categoryService.addCategory(category);

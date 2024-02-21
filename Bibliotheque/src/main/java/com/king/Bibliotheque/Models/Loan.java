@@ -3,6 +3,7 @@ package com.king.Bibliotheque.Models;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
@@ -12,6 +13,7 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @Table(name = "loan")
+@NoArgsConstructor
 public class Loan {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -3,6 +3,7 @@ package com.king.Bibliotheque.Models;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
@@ -13,6 +14,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @Table(name = "bookCopy")
+@NoArgsConstructor
 public class BookCopy {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
