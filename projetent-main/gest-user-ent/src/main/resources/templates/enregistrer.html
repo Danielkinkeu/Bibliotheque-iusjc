@@ -1,0 +1,103 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:replace="fragments/_head.html::head"></th:block>
+</head>
+
+<body>
+
+    <th:block th:replace="fragments/_header.html::header"></th:block>
+
+
+    <main id="main">
+        <!-- ======= Breadcrumbs ======= -->
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <!-- <h2>Liste des actes</h2> -->
+                    <ol>
+                        <li><a th:href="@{index}">Accueil</a></li>
+                        <li>Enregistrer un acte</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section>
+        <!-- End Breadcrumbs -->
+
+        <section class="inner-page" id="demande">
+            <div class="container align-content-center">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="col-lg-10 mt-4">
+                            <div class="info">
+
+                                <h4>Enregistrer un acte de naissance</h4>
+                                <p>Entrer les informations nécessaires de l'acte de naissance</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-8">
+                        <form class="php-email-form mt-4"
+                              th:method="post"
+                              th:action="@{/enregistreracte}"
+                              th:object="${acteDto}">
+                            <label class="text-label">Informations de l'enfant</label>
+                            <div class="row">
+
+                                <div class="col-md-6 form-group">
+                                    <input type="text" th:field="*{numero}" name="numero" class="form-control" id="numero"  placeholder="Numero de l'acte" required>
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-6 form-group">
+                                    <input th:field="*{nom}" type="text" name="nom" class="form-control" id="nom"  placeholder="Nom de l'enfant" required>
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <input th:field="*{prenom}" type="text" class="form-control" name="prenom" id="prenom"  placeholder="Prénom de l'enfant" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <input th:field="*{dateNaissance}" type="date" name="datenaissance" class="form-control" id="datenaissance" placeholder="Date de naissance" required>
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <input th:field="*{lieuNaissance}" type="text" class="form-control" name="lieu" id="lieu" placeholder="Lieu de naissance" required>
+                                </div>
+                            </div>
+
+                            <label class="text-label">Informations des parents</label>
+                            <div class="row">
+
+                                <div class="col-md-6 form-group">
+                                    <input th:field="*{nomPrenomPere}" type="text"  name="nomprenompere" class="form-control" id="nomprenompere" placeholder="Nom et prénom du père" required>
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <input th:field="*{nomPrenomPMere}" type="text" class="form-control" name="nomprenommere" id="nomprenommere" placeholder="Nom et prénom de la mère" required>
+                                </div>
+                            </div>
+
+
+
+                            <div class="text-center"><button type="submit">Enregistrer</button></div>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+    </main>
+
+    <th:block th:replace="fragments/_footer.html::footer"></th:block>
+
+    <th:block th:replace="fragments/_js.html::js"></th:block>
+</body>
+
+</html>

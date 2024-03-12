@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.13.0.final using JasperReports Library version 6.13.0-46ada4d1be8f3c5985fd0b6146f3ed44caed6f05  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="NoteUe2" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5f0f2fe9-1d6d-47a2-bab0-9b4b50f7b1b0">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Local ISJ"/>
+	<parameter name="filiere" class="java.lang.String"/>
+	<parameter name="specialite" class="java.lang.String"/>
+	<parameter name="niveau" class="java.lang.Integer"/>
+	<parameter name="annee_academique" class="java.lang.String"/>
+	<parameter name="typeEval" class="java.lang.String"/>
+	<parameter name="annee_debut" class="java.lang.Integer"/>
+	<parameter name="semestre" class="java.lang.String"/>
+	<parameter name="image_isj" class="java.lang.String"/>
+	<parameter name="ue" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[call notesEvaluation($P{filiere}, $P{ue}, $P{niveau}, $P{semestre}, $P{specialite},
+									$P{typeEval},$P{annee_debut})]]>
+	</queryString>
+	<field name="matricule" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="matricule"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="etudiant_ue_note"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nom_prenom" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nom_prenom"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="etudiant_ue_note"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="note" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.label" value="moyenne"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="etudiant_moyenne_ue"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="158" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="185" height="10" uuid="0fb67e26-1515-4721-a21c-e91b1b7fcaac"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSITE DE YAOUNDE I]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="10" width="185" height="10" uuid="c21b5b70-f512-4f37-9e38-40273becf73b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ecole Nationale Supérieure Polytechnique]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="185" height="10" uuid="2dfc198c-cc84-4f15-ab9d-ec9b6712dd32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Institut Saint Jean]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="91" width="105" height="12" uuid="3f5598e2-0be4-4cfb-9438-8a91bbaf2f5f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Semestre :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="77" width="105" height="13" uuid="e3591f38-9d8c-4aca-aee8-6d02a02f811f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Année Académique:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="104" width="105" height="12" uuid="c7d05a75-f272-405b-9638-06285bc39d00"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Filière :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="117" width="105" height="12" uuid="f28cbf85-ca06-45fe-8179-7ef96f76355f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Specialite :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="184" y="77" width="386" height="13" uuid="b1f87490-4d8e-4d01-b554-6f0dd18073ac"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{annee_academique}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="185" y="104" width="389" height="13" uuid="29339acc-f551-4171-8818-b949ee3840a7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{filiere}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="184" y="130" width="391" height="13" uuid="cd9210bf-68a2-4e0d-ae29-fdb00c376e2d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{niveau}]]></textFieldExpression>
+			</textField>
+			<image onErrorType="Blank">
+				<reportElement x="230" y="-1" width="100" height="51" uuid="055bc489-fb55-4c86-8932-f1abd280167f"/>
+				<imageExpression><![CDATA[$P{image_isj}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="417" y="-1" width="153" height="10" uuid="29bc1e49-4c25-41fd-a4f4-64191ff460de"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPUBLIQUE DU CAMEROUN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="9" width="153" height="10" uuid="3d1cadc3-4a9f-4696-8dc3-8bf09f4db51a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="5" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Paix - Travail - Patrie]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="184" y="90" width="386" height="13" uuid="321245e4-9f89-4c54-af69-55b941221317"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{semestre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="185" y="117" width="389" height="13" uuid="41e2d824-713d-40f9-8b15-b5b1f4315791"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{specialite}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="80" y="130" width="105" height="12" uuid="701bd34d-80cf-432c-b297-963a50c0ede2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Niveau :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="184" y="145" width="391" height="13" uuid="2b6e1540-a626-4091-91c6-5950c65e9fd4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{typeEval}+" "+$P{ue}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="80" y="145" width="105" height="12" uuid="cfe0885f-26ff-49e2-8aaa-219d3923ae1e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Evaluation :]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="0" y="0" width="80" height="20" uuid="896cfcb1-adac-4e53-8610-0368ec665995"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Matricule]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="0" width="350" height="20" uuid="d717dcd2-10d2-4f8d-9585-27a70c1c211c"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Noms et Prénoms]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="0" width="120" height="20" uuid="63838b38-8f75-454d-8949-0b6ff2f2f5e6"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Note]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="0" y="0" width="80" height="20" uuid="40324e5e-86b5-42ca-bfca-209c934f42d7"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{matricule}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="0" width="350" height="20" uuid="03823b38-0c64-4415-b4b5-842196af2d6f">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nom_prenom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="120" height="20" uuid="48d4bf85-cc03-4ae4-b6ec-1e41e1aaf473"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{note}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="477" y="4" width="27" height="12" uuid="8b9c5f4d-942a-40a2-bd98-4ec7a7c3880f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="504" y="4" width="5" height="14" uuid="5e60b637-cba1-4877-a34f-c2af0d65a199">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA['/']]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="509" y="4" width="14" height="12" uuid="a0b65035-15b9-46dd-93a8-1d29b24fc337"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

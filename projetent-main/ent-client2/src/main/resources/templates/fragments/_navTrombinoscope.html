@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymeleaf.org" >
+
+<th:block th:fragment="navTrombinoscope">
+
+    <!-- partial:partials/_sidebar.html -->
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/dashboard}">
+                    <i class="bi bi-arrow-left-circle-fill menu-icon"></i>
+                    <span class="menu-title">Retour à l'ENT</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/trombinoscope}">
+                    <i class="bi bi-person-square menu-icon"></i>
+                    <span class="menu-title">Trombinoscope</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                    <i class="bi bi-mortarboard-fill menu-icon"></i>
+                    <span class="menu-title">Informations</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="ui-basic">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" th:href="@{/trombinoscope/information/etudiant}">Etudiants</a></li>
+                        <li class="nav-item"> <a class="nav-link" th:href="@{/trombinoscope/information/personnel}">Personnel</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <!-- partial -->
+
+</th:block>
+
+</html>

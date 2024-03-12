@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 8.1.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="carte_scolaire_isj" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="983a4a84-5f15-4e64-b7f5-ad23506a34a2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="background" class="java.lang.String"/>
+	<parameter name="annee" class="java.lang.Integer"/>
+	<parameter name="filiere" class="java.lang.String"/>
+	<parameter name="specialite" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="niveau" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="images_folder" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[call carte_etudiant($P{filiere},$P{specialite},$P{annee},$P{niveau})]]>
+	</queryString>
+	<field name="nom" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prenom" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date_naissance" class="java.sql.Timestamp">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telephone_du_pere" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telephone_de_la_mere" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="matricule" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lieu_naissance" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="filiere" class="java.lang.String"/>
+	<field name="specialite" class="java.lang.String"/>
+	<field name="niveau" class="java.lang.Integer"/>
+	<variable name="variable1" class="java.lang.Integer">
+		<variableExpression><![CDATA[$P{annee} + 1]]></variableExpression>
+	</variable>
+	<detail>
+		<band height="430" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="10" y="210" width="650" height="33" isPrintWhenDetailOverflows="true" uuid="39334e14-b80a-4f15-8663-5a561e8692bd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="21" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Année Académique : " + $P{annee} + "/" + $V{variable1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="110" y="243" width="550" height="24" uuid="3325b34c-01b8-48b7-aef4-48671efd1aa0"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="18" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{matricule}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="267" width="100" height="32" uuid="91498b0e-76ea-41d6-9ad6-231386906e55"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="18" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Nom(s) : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="299" width="100" height="27" uuid="2fd3747c-14af-4c32-a153-b7294046318e"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="18" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Né(e) le : ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="110" y="326" width="550" height="24" isPrintWhenDetailOverflows="true" uuid="2cd9c388-67e4-4316-9fa9-2338a041a3c6"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="18" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{filiere}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="190" y="406" width="632" height="24" uuid="7e76fd81-7c6e-42a8-9275-8ee9bca0bd3b"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="18" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telephone_du_pere}.concat($F{telephone_de_la_mere}).length()>=16?($F{telephone_du_pere}+"/"+$F{telephone_de_la_mere}):((! ($F{telephone_du_pere}.equalsIgnoreCase( "" )||$F{telephone_du_pere}.equalsIgnoreCase( "0" ))? $F{telephone_du_pere}:(!($F{telephone_de_la_mere}.equalsIgnoreCase( "" )||$F{telephone_de_la_mere}.equalsIgnoreCase( "0" ))?$F{telephone_de_la_mere} :"")))]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="110" y="380" width="712" height="26" uuid="fcb93a50-a3db-4a88-b553-b30a2368efce"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="18" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{niveau}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="110" y="299" width="96" height="27" uuid="14b948ba-5c00-4e9a-9d21-797bd89fa8b1"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="18" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date_naissance}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="110" y="267" width="550" height="32" isPrintWhenDetailOverflows="true" uuid="ee204804-0686-46b1-a29c-9cab49901d2f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="18" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nom}.toUpperCase() +" "+ $F{prenom}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame" onErrorType="Blank">
+				<reportElement x="660" y="210" width="160" height="170" uuid="fe8c1255-fd89-470c-91b4-96dd193f698c"/>
+				<imageExpression><![CDATA[new File($P{images_folder}+$F{matricule}+".JPG").exists()?(new File($P{images_folder}+$F{matricule}+".JPG")):(new File($P{images_folder}+$F{matricule}+".jpg"))]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="10" y="326" width="100" height="24" uuid="1644e44d-8622-4d7d-8f3d-57716dcfd65d"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="18" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Filière : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="380" width="100" height="26" uuid="4dc3b86e-54be-4399-949a-119a782ec297"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="18" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Niveau : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="406" width="180" height="24" uuid="ff4022b6-1c55-4eec-84dd-54220f53b190"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="18" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Contact(s) urgence :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="243" width="100" height="24" uuid="f88f1978-76bd-499d-9670-70f65a5c02ab"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="18" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Matricule :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="206" y="300" width="70" height="27" uuid="a650ad9c-8225-4cc8-92ff-1c9161332ed6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="18" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[à]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="276" y="300" width="384" height="27" uuid="2c21dcd9-871d-4df9-97b9-49f71478a98c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="18" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lieu_naissance}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="350" width="100" height="30" uuid="481d765a-9b5d-4122-91a2-16e237a60dad"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="18" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Spécialité : ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="110" y="350" width="550" height="30" isPrintWhenDetailOverflows="true" uuid="72b093fc-c471-47f6-90e1-0b7ba9a0037b"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="18" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{specialite}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

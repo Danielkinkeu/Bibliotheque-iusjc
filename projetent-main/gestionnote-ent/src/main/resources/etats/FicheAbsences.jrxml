@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.13.0.final using JasperReports Library version 6.13.0-46ada4d1be8f3c5985fd0b6146f3ed44caed6f05  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FicheAbsences" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="86fcafd0-dcf2-40bf-bf01-6c57ab82dcbe">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Local ISJ"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<style name="Crosstab Data Text"/>
+	<parameter name="classe" class="java.lang.String"/>
+	<parameter name="annee_academique" class="java.lang.Integer"/>
+	<parameter name="semestre" class="java.lang.String"/>
+	<parameter name="logo_isj" class="java.lang.String"/>
+	<parameter name="date_debut" class="java.sql.Date"/>
+	<parameter name="date_fin" class="java.sql.Date"/>
+	<queryString>
+		<![CDATA[call disci($P{annee_academique},$P{classe},$P{date_debut},$P{date_fin},$P{semestre})]]>
+	</queryString>
+	<field name="matricule" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nom_prenom" class="java.lang.String"/>
+	<field name="retard" class="java.lang.String"/>
+	<field name="absc" class="java.math.BigDecimal"/>
+	<field name="heure_j" class="java.math.BigDecimal"/>
+	<field name="retards" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="173" splitType="Stretch">
+			<staticText>
+				<reportElement x="88" y="40" width="204" height="20" uuid="f0e6b5c6-b72b-40d9-84f4-16e56e146f93"/>
+				<text><![CDATA[Tél. : 657 07 98 07 / 651 36 96 96]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="20" width="204" height="20" uuid="592e0984-783b-4083-b2d4-aaa91bbd7a86"/>
+				<text><![CDATA[B.P.: 749 Yaounde]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="0" width="204" height="20" uuid="72e3ebc2-b279-4908-9faa-69288538b757"/>
+				<text><![CDATA[INSTITUT SAINT JEAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="60" width="204" height="20" forecolor="#3366FF" uuid="b473ffea-dc52-459b-9451-6bb4f980b7e0"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[E-mail. : info@institutsaintjean.org]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="80" width="204" height="20" forecolor="#3366FF" uuid="cfef2004-8ff6-4de1-88a5-fff4105c8cbd"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Site : www.institutsaintjean.org]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="118" width="51" height="20" uuid="95557f8f-5fa1-44c6-9fc6-36cf3a8460cb"/>
+				<textElement verticalAlignment="Middle">
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[CLASSE :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="139" y="118" width="100" height="20" uuid="df20cb09-9cfa-4f5f-8bd5-5ceb50550819"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{classe}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="120" width="100" height="20" uuid="43ee23f7-4272-43d5-8466-907fad41ca24"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{annee_academique}+"/"+($P{annee_academique}+1)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="120" width="100" height="20" uuid="57f0e31b-24d1-402f-b366-d375d37f58c7"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{semestre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Crosstab Data Text" x="0" y="150" width="555" height="20" uuid="c625bccb-5425-4cfe-b8ad-82804e846983"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Période allant du "+$P{date_debut}.toString()+" au "+$P{date_fin}.toString()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="50">
+			<image>
+				<reportElement x="252" y="0" width="50" height="50" uuid="33e58d41-52e5-43ce-a038-5576de231a59"/>
+				<imageExpression><![CDATA[$P{logo_isj}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="169">
+			<crosstab>
+				<reportElement x="26" y="0" width="529" height="169" uuid="df69c909-1bf4-49a2-b226-d4b2937c89bf"/>
+				<crosstabDataset>
+					<dataset resetType="Report"/>
+				</crosstabDataset>
+				<crosstabHeaderCell>
+					<cellContents>
+						<staticText>
+							<reportElement style="Crosstab Data Text" x="47" y="0" width="104" height="22" forecolor="#000000" backcolor="#FFFFFF" uuid="f8fd5e27-0ab1-4c70-ba65-3459c38a1ed1"/>
+							<box>
+								<pen lineWidth="1.0"/>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="8" isBold="true"/>
+							</textElement>
+							<text><![CDATA[Noms et Prénoms]]></text>
+						</staticText>
+						<staticText>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="47" height="22" uuid="03682cf3-f207-4f32-bef8-f5cdb44fb4ef"/>
+							<box>
+								<pen lineWidth="1.0"/>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="8" isBold="true"/>
+							</textElement>
+							<text><![CDATA[Matricules]]></text>
+						</staticText>
+					</cellContents>
+				</crosstabHeaderCell>
+				<rowGroup name="pers" width="151">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{nom_prenom}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Transparent">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" mode="Opaque" x="47" y="0" width="104" height="13" uuid="c2aefed7-c697-4255-9c1e-65dd62d0a54c"/>
+								<box>
+									<pen lineWidth="1.0"/>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{pers}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="47" height="13" uuid="07a59a1f-901c-42c4-963c-36fdd78c0fc4"/>
+								<box>
+									<pen lineWidth="1.0"/>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement>
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{matricule}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="mois" height="23" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{retard}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement style="Crosstab Data Text" mode="Opaque" x="0" y="0" width="50" height="22" forecolor="#000000" backcolor="#CCCCCC" uuid="738f1a89-ee23-4995-a6b9-b719d78241da"/>
+								<box>
+									<pen lineWidth="1.0"/>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Absences]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="35" height="22" forecolor="#000000" backcolor="#CCCCCC" uuid="1f3a189a-b56a-45a4-b104-a0bac8aab4b1"/>
+								<box>
+									<pen lineWidth="1.0"/>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Justifiees]]></text>
+							</staticText>
+							<staticText>
+								<reportElement style="Crosstab Data Text" mode="Opaque" x="35" y="0" width="34" height="22" forecolor="#000000" backcolor="#CCCCCC" uuid="405477c6-0fa3-4a91-bdc6-0f86766338e9"/>
+								<box>
+									<pen lineWidth="1.0"/>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Retards]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="nb_heures_absencesMeasure" class="java.math.BigDecimal">
+					<measureExpression><![CDATA[$F{absc}]]></measureExpression>
+				</measure>
+				<measure name="heure_J" class="java.math.BigDecimal">
+					<measureExpression><![CDATA[$F{heure_j}]]></measureExpression>
+				</measure>
+				<measure name="total" class="java.math.BigDecimal" calculation="Sum">
+					<measureExpression><![CDATA[$F{absc}]]></measureExpression>
+				</measure>
+				<measure name="matricule" class="java.lang.String">
+					<measureExpression><![CDATA[$F{matricule}]]></measureExpression>
+				</measure>
+				<measure name="retards_measure" class="java.math.BigDecimal">
+					<measureExpression><![CDATA[$F{retards}]]></measureExpression>
+				</measure>
+				<crosstabCell width="50" height="13">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField isBlankWhenNull="true">
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="13" uuid="c645b121-90b3-4f16-af2c-fd1d0c5de5c1"/>
+							<box>
+								<pen lineWidth="1.0"/>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{nb_heures_absencesMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="104" height="13" columnTotalGroup="mois">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" mode="Opaque" x="0" y="0" width="35" height="13" uuid="db3767b8-544c-45c8-a8a9-f9a097b3b105"/>
+							<box>
+								<pen lineWidth="1.0"/>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{heure_J}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" mode="Opaque" x="35" y="0" width="34" height="13" uuid="13605035-06c7-479c-9b02-52450945db36"/>
+							<box>
+								<pen lineWidth="1.0"/>
+								<topPen lineWidth="1.0"/>
+								<leftPen lineWidth="1.0"/>
+								<bottomPen lineWidth="1.0"/>
+								<rightPen lineWidth="1.0"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font size="8" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{retards_measure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell height="25" rowTotalGroup="pers">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="43080ee4-4ba5-4507-8fca-9030e693cd87"/>
+							<textFieldExpression><![CDATA[$V{nb_heures_absencesMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="pers" columnTotalGroup="mois">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="-2147483648" height="-2147483648" uuid="60560471-2a8c-4df1-be53-07e3ca888d62"/>
+							<textElement>
+								<font size="2"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{nb_heures_absencesMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>

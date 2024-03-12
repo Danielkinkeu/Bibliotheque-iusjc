@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org" >
+
+<th:block th:fragment="js">
+
+    <!-- Bootstrap core JavaScript-->
+    <!-- plugins:js -->
+    <script th:src="@{../../vendors/js/vendor.bundle.base.js}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script th:src="@{../../vendors/chart.js/Chart.min.js}"></script>
+    <script th:src="@{../../vendors/datatables.net/jquery.dataTables.js}"></script>
+    <script th:src="@{../../vendors/datatables.net-bs4/dataTables.bootstrap4.js}"></script>
+    <script th:src="@{../../js/dataTables.select.min.js}"></script>
+    <script th:src="@{../../vendors/typeahead.js/typeahead.bundle.min.js}"></script>
+    <script th:src="@{../../vendors/select2/select2.min.js}"></script>
+
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script th:src="@{../../js/off-canvas.js}"></script>
+    <script th:src="@{../../js/hoverable-collapse.js}"></script>
+    <script th:src="@{../../js/template.js}"></script>
+    <script th:src="@{../../js/settings.js}"></script>
+    <script th:src="@{../../js/todolist.js}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script th:src="@{../../js/dashboard.js}"></script>
+    <script th:src="@{../../js/Chart.roundedBarCharts.js}"></script>
+    <script th:src="@{../../js/select2.js}"></script>
+    <script th:src="@{../../js/typeahead.js}"></script>
+    <script th:src="@{../../js/file-upload.js}"></script>
+    <!-- End custom js for this page-->
+
+
+</th:block>
+
+</html>

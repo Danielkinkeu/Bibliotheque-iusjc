@@ -1,0 +1,27 @@
+spring:
+  cloud:
+    gateway:
+      x-forwarded:
+        enabled: true
+        for-enabled: true
+        for-append: true
+        proto-enabled: false
+        host-enabled: false
+        port-enabled: false
+      routes:
+        - id: front_end_route
+          uri: lb://fakefrontEndServer
+          predicates:
+            - Path=/front-end/**
+
+
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:5000}/eureka/ #IDE
+#       defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8080}/discovery/eureka/

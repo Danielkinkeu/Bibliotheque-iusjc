@@ -1,0 +1,92 @@
+<html xmlns:th="http://www.thymeleaf.org" >
+
+<th:block th:fragment="navNotes">
+
+    <nav class="sidebar sidebar-offcanvas" id="sidebar" >
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{dashboard}">
+                    <i class="bi bi-arrow-left-circle-fill menu-icon "></i>
+                    <span class="menu-title">Retour à l'ENT</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{gestionnote}">
+                    <i class="icon-grid menu-icon"></i>
+                    <span class="menu-title">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:if="${session.authorithies[0].authority =='Etudiant' }" th:href="@{profil}">
+                    <i class="bi bi-people-fill menu-icon"></i>
+                    <span class="menu-title">Mon Profil</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:if="${session.authorithies[0].authority =='Etudiant' }" th:href="@{parcours}"  >
+                    <i class="bi bi-list-columns-reverse menu-icon"></i>
+                    <span class="menu-title">Mon Parcours </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <span class="app">Impression</span>
+            </li>
+            <li class="nav-item" th:if="${session.authorithies[0].authority =='Admin' }">
+                <a class="nav-link"  data-toggle="modal" data-target="#bilanAbsModal" href="#" aria-expanded="false" aria-controls="ui-basic" >
+                    <i class="bi bi-people-fill menu-icon"></i>
+                    <span class="menu-title">Bilan d'absence</span>
+                </a>
+            </li>
+
+            <li class="nav-item" >
+                <a class="nav-link" data-toggle="collapse" href="#cert" aria-expanded="false" aria-controls="ui-basic">
+                    <i class="bi bi-file-check-fill menu-icon"></i>
+                    <span class="menu-title" >Certificats</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="cert">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#AttestationModal" th:if="${session.authorithies[0].authority =='Admin' }">Attestation </a></li>
+                        <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#CertModal">Certificats scolarité</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item" th:if="${session.authorithies[0].authority =='Admin' }">
+                <a class="nav-link" data-toggle="collapse" href="#etudiant" aria-expanded="false" aria-controls="ui-basic">
+                    <i class="bi bi-people-fill menu-icon"></i>
+                    <span class="menu-title">Etudiants</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="etudiant">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#carteModal">Carte d'étudiant</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#classeModal">Liste des classes</a></li>
+
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#pv" aria-expanded="false" aria-controls="ui-basic">
+                    <i class="icon-layout menu-icon"></i>
+                    <span class="menu-title">PV & Relevé</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="pv">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#pvModal">PV</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#pvSynModal"> Pv de synthése</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#RelevéModal">Relevé</a></li>
+                    </ul>
+                </div>
+            </li>
+
+        </ul>
+    </nav>
+    <!-- partial -->
+
+
+</th:block>
+
+</html>

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Gestion documents</title>
+    <!-- plugins:css./vendors/feather/feather.css -->
+    <link rel="stylesheet" href="../../vendors/feather/feather.css">
+    <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link href="../../vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="../../js/select.dataTables.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../../images/favicon.png" />
+  </head>
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo mr-5" href="../Accueil.html"><img src="../../images/logo_isj.png" class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="../Accueil.html"><img src=../../images/logo-mini.svg" alt="logo"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="icon-menu"></span>
+        </button>
+        <ul class="navbar-nav mr-lg-2">
+          <li class="nav-item nav-search d-none d-lg-block">
+            <div class="input-group">
+              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                <span class="input-group-text" id="search">
+                  <i class="icon-search"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+              <i class="icon-bell mx-0"></i>
+              <span class="count"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+              <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-success">
+                    <i class="ti-info-alt mx-0"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-normal">Application Error</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted">
+                    Just now
+                  </p>
+                </div>
+              </a>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-warning">
+                    <i class="ti-settings mx-0"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-normal">Settings</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted">
+                    Private message
+                  </p>
+                </div>
+              </a>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-info">
+                    <i class="ti-user mx-0"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-normal">New user registration</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted">
+                    2 days ago
+                  </p>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+              <img src="images/faces/face28.jpg" alt="profile"/>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <a class="dropdown-item">
+                <i class="ti-settings text-primary"></i>
+                Settings
+              </a>
+              <a class="dropdown-item">
+                <i class="ti-power-off text-primary"></i>
+                Logout
+              </a>
+            </div>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="icon-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_settings-panel.html -->
+      <div class="theme-setting-wrapper">
+        <div id="settings-trigger"><i class="ti-settings"></i></div>
+        <div id="theme-settings" class="settings-panel">
+          <i class="settings-close ti-close"></i>
+          <p class="settings-heading">SIDEBAR SKINS</p>
+          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
+          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
+          <p class="settings-heading mt-2">HEADER SKINS</p>
+          <div class="color-tiles mx-0 px-4">
+            <div class="tiles success"></div>
+            <div class="tiles warning"></div>
+            <div class="tiles danger"></div>
+            <div class="tiles info"></div>
+            <div class="tiles dark"></div>
+            <div class="tiles default"></div>
+          </div>
+        </div>
+      </div>
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="../Accueil.html">
+              <i class="bi bi-arrow-left-circle-fill menu-icon "></i>
+              <span class="menu-title">Retour à l'ENT</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Documentaire</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="listedocuments.html">Liste Documents</a></li>
+              </ul>
+            </div>
+          </li> 
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-end " style="margin-bottom: 10px">
+                     <button data-toggle="modal" data-target="#ajouterDocumentModal" type="button" class="btn btn-primary btn-icon-text">
+                        <i class="ti-file btn-icon-prepend"></i>
+                            Creer un Document
+                  </button>
+                </div>
+                <h4 class="card-title">Liste des Documents</h4>
+                <p class="card-description">
+                 la liste de tous les documents administratif de l'université saint jean
+                </p>  
+                  <div class="table-responsive">
+                    <table id="table_id" class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>
+                            Titre
+                          </th>
+                          <th>
+                             Derniere modification
+                          </th>
+                          <th>
+                            Auteur
+                          </th>
+                          <th>
+                            Action
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="py-1">
+                            <i class="bi bi-file-earmark-arrow-up u--full"></i>&nbsp;<span style="font-size:16px ; ">Reglement interieur</span>
+                          </td>
+                          <td>
+                            12 Octobre 2022
+                          </td>
+                          <td>
+                            TAGNE Elohim
+                          </td>
+                          <td>
+                            <div class="icon d-flex gap-lg-2 ">
+                                <div>
+                                    <button type="button" class="btn btn-primary btn-rounded btn-icon btn-lg ">
+                                        <i class="icon-share"></i>
+                                        
+                                    </button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-primary btn-rounded btn-icon">
+                                        <i class="icon-download "></i>
+                                    </button>
+                                </div>    
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td class="py-1">
+                              <i class="bi bi-file-earmark-arrow-up"></i>&nbsp;<span style="font-size:16px ; ">Reglement interieur</span>
+                            </td>
+                            <td>
+                              12 Octobre 2022
+                            </td>
+                            <td>
+                              TAGNE Elohim
+                            </td>
+                            <td>
+                              <div class="icon d-flex gap-lg-2 ">
+                                  <div>
+                                      <button type="button" class="btn btn-primary btn-rounded btn-icon btn-lg ">
+                                          <i class="icon-share"></i>
+                                      </button>
+                                  </div>
+                                  <div>
+                                      <button type="button" class="btn btn-primary btn-rounded btn-icon">
+                                          <i class="icon-download"></i>
+                                      </button>
+                                  </div>    
+                              </div>
+                            </td>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+        <!-- content-wrapper ends -->
+
+        <!--Ajout Document-->
+        <div class="modal fade" id="ajouterDocumentModal" tabindex="-1" aria-labelledby="ajouterDocumentModal" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modal-title">Ajouter un Document</h5>
+                  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form action="" class=" form-sample row justify-content-center gap-3">
+                    <div class="form-group">
+                      <label for="class" class="form-label">Entrer le Titre</label>
+                        <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label for="class" class="form-label">Entrer la Date de modification</label>
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username">
+                      </div>
+                      <div class=form-group">
+                        <label for="class" class="form-label">Entrer l'auteur</label>
+                          <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username">
+                      </div>
+                      <div class="form-group">
+                        <label for="formFileMultiple" class="form-label ">Multiple files input example</label>
+                          <input class="form-control" type="file" id="formFileMultiple" multiple />
+                        </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
+                  <input type="submit" class="btn btn-primary" value="Envoyer">
+                </div>
+              </div>
+            </div>
+          </div>
+       <!-- End Modal for detail candidate -->
+         <!-- Modal for note  -->
+  <div class="modal fade" id="noteModal" tabindex="-1" aria-labelledby="noteModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-title">Voir les notes  d'un étudiant</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" class="row justify-content-center gap-3">
+            <div class="col-lg-12 row flex-column">
+              <label for="class" class="form-label">Sélectionner la classe</label>
+              <select name="class" id="class" class="form-select">
+                <option value="">INGE 1 - Tronc commun</option>
+                <option value="">INGE 2 - Tronc commun</option>
+                <option value="">INGE 3 ISI</option>
+                <option value="">INGE 3 SRT</option>
+                <option value="">INGE 4 ISI</option>
+                <option value="">INGE 4 SRT</option>
+                <option value="">INGE 5 ISI</option>
+                <option value="">INGE 5 SRT</option>
+              </select>
+            </div>
+            <div class="col-lg-12 row flex-column">
+              <label for="year" class="form-label">Sélectionner l'année académique</label>
+              <select name="year" id="year" class="form-select">
+                <option value="">2022 - 2023</option>
+                <option value="">2021 - 2022</option>
+                <option value="">2020 - 2021</option>
+                <option value="">2019 - 2020</option>
+                <option value="">2018 - 2019</option>
+              </select>
+            </div>
+            <div class="col-lg-12 row flex-column">
+              <label for="year" class="form-label">Veuillez entrer le code de la matiére</label>
+              <input type="text" name= "cursus" id="cursus"  placeholder="Entrer le code de l'UE" class="form-control" />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
+          <input type="submit" class="btn btn-primary" value="Envoyer">
+        </div>
+      </div>
+    </div>
+  </div><!-- End Modal for note  -->
+  
+  <!-- Modal for Bilan Absence -->
+  <div class="modal fade" id="bilanAbsModal" tabindex="-1" aria-labelledby="bilanAbsModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="bilanAbsModal">Générer le  bilan d'absence</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" class="row justify-content-center gap-3" >
+            <div class="col-lg-12 row flex-column">
+              <label for="class" class="form-label">Sélectionner la classe</label>
+              <select name="class" id="class" class="form-select">
+                <option value="">INGE 1 - Tronc commun</option>
+                <option value="">INGE 2 - Tronc commun</option>
+                <option value="">INGE 3 ISI</option>
+                <option value="">INGE 3 SRT</option>
+                <option value="">INGE 4 ISI</option>
+                <option value="">INGE 4 SRT</option>
+                <option value="">INGE 5 ISI</option>
+                <option value="">INGE 5 SRT</option>
+              </select>
+            </div>
+            <div class="col-lg-12 row flex-column">
+              <label for="year" class="form-label">Sélectionner l'année académique</label>
+              <select name="year" id="year" class="form-select">
+                <option value="">2022 - 2023</option>
+                <option value="">2021 - 2022</option>
+                <option value="">2020 - 2021</option>
+                <option value="">2019 - 2020</option>
+                <option value="">2018 - 2019</option>
+              </select>
+            </div>
+            <div class="col-lg-12 row flex-column">
+              <label for="semester" class="form-label">Sélectionner le semestre</label>
+              <select name="semester" id="semester" class="form-select">
+                <option value="">Semestre 1</option>
+                <option value="">Semestre 2</option>
+              </select>
+            </div>
+           
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          <input type="submit" class="btn btn-primary" value="Envoyer">
+        </div>
+      </div>
+    </div>
+  </div><!-- End Modal for Bilan Absence -->
+
+        <!-- Modal for note statement -->
+  <div class="modal fade" id="noteStatModal" tabindex="-1" aria-labelledby="noteStatModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-title">Générer le relevé de note d'un étudiant</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" class="row justify-content-center gap-3">
+            <div class="col-lg-12 row flex-column">
+              <label for="class" class="form-label">Sélectionner la classe</label>
+              <select name="class" id="class" class="form-select">
+                <option value="">INGE 1 - Tronc commun</option>
+                <option value="">INGE 2 - Tronc commun</option>
+                <option value="">INGE 3 ISI</option>
+                <option value="">INGE 3 SRT</option>
+                <option value="">INGE 4 ISI</option>
+                <option value="">INGE 4 SRT</option>
+                <option value="">INGE 5 ISI</option>
+                <option value="">INGE 5 SRT</option>
+              </select>
+            </div>
+            <div class="col-lg-12 row flex-column">
+              <label for="year" class="form-label">Sélectionner l'année académique</label>
+              <select name="year" id="year" class="form-select">
+                <option value="">2022 - 2023</option>
+                <option value="">2021 - 2022</option>
+                <option value="">2020 - 2021</option>
+                <option value="">2019 - 2020</option>
+                <option value="">2018 - 2019</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
+          <input type="submit" class="btn btn-primary" value="Envoyer">
+        </div>
+      </div>
+    </div>
+  </div><!-- End Modal for note statement -->
+  
+  <!-- Modal for PV -->
+  <div class="modal fade" id="pvModal" tabindex="-1" aria-labelledby="pvModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="pvModal">Générer les procès verbaux</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" class="row justify-content-center gap-3" >
+            <div class="col-lg-12 row flex-column">
+              <label for="class" class="form-label">Sélectionner la classe</label>
+              <select name="class" id="class" class="form-select">
+                <option value="">INGE 1 - Tronc commun</option>
+                <option value="">INGE 2 - Tronc commun</option>
+                <option value="">INGE 3 ISI</option>
+                <option value="">INGE 3 SRT</option>
+                <option value="">INGE 4 ISI</option>
+                <option value="">INGE 4 SRT</option>
+                <option value="">INGE 5 ISI</option>
+                <option value="">INGE 5 SRT</option>
+              </select>
+            </div>
+            <div class="col-lg-12 row flex-column">
+              <label for="year" class="form-label">Sélectionner l'année académique</label>
+              <select name="year" id="year" class="form-select">
+                <option value="">2022 - 2023</option>
+                <option value="">2021 - 2022</option>
+                <option value="">2020 - 2021</option>
+                <option value="">2019 - 2020</option>
+                <option value="">2018 - 2019</option>
+              </select>
+            </div>
+            <div class="col-lg-12 row flex-column">
+              <label for="semester" class="form-label">Sélectionner le semestre</label>
+              <select name="semester" id="semester" class="form-select">
+                <option value="">Semestre 1</option>
+                <option value="">Semestre 2</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          <input type="submit" class="btn btn-primary" value="Envoyer">
+        </div>
+      </div>
+    </div>
+  </div><!-- End Modal for PV -->
+
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2022.  <a href="https://www.bootstrapdash.com/" target="_blank">from ClienWeb Group. </a> All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  </div>
+  <!-- container-scroller -->
+
+  <!-- plugins:js -->
+  <script src="../../vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="../../vendors/chart.js/Chart.min.js"></script>
+  <script src="../../vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="../../vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <script src="../../js/dataTables.select.min.js"></script>
+  <script src="../../js/simple-datatables.js"></script>
+
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="../../js/off-canvas.js"></script>
+  <script src="../../js/hoverable-collapse.js"></script>
+  <script src="../../js/template.js"></script>
+  <script src="../../js/settings.js"></script>
+  <script src="../../js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="../../js/dashboard.js"></script>
+  <script src="../../js/Chart.roundedBarCharts.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>
+

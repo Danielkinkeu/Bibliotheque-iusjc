@@ -1,0 +1,18 @@
+<html xmlns:th="http://www.thymeleaf.org" >
+
+<th:block th:fragment="navNotes">
+
+    <nav class="sidebar sidebar-offcanvas" id="sidebar" >
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{dashboard}">
+                    <i class="bi bi-arrow-left-circle-fill menu-icon "></i>
+                    <span class="menu-title">Retour à l'ENT</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- partial -->
+</th:block>
+
+</html>

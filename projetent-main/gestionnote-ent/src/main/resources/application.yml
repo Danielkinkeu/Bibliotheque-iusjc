@@ -1,0 +1,33 @@
+server:
+  port: 9000
+  servlet:
+    context-path: /api/gest-note
+
+health:
+  config:
+    enabled: false
+
+spring:
+  application:
+    name: gestNote
+  cloud:
+    config:
+      enabled: true
+      failFast: true
+      label: master
+      discovery:
+        enabled: true
+        serviceId: configserver
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:5000}/eureka/
+#      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8080}/discovery/eureka/
+
+signing:
+  key: hufkhjbdszp$$kl$@jhjkhkkk

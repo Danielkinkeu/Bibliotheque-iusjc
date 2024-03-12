@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Gestion des Interventions</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" type="text/css" th:href="@{/css/gIntervention.css}" >
+  <link rel="stylesheet" href="/vendors/feather/feather.css">
+  <link rel="stylesheet" href="/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="/vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link href="/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendors/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" type="/text/css" href="js/select.dataTables.min.css">
+  <!-- End plugin css for this page -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="/vendors/select2/select2.min.css">
+  <link rel="stylesheet" href="/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/css/vertical-layout-light/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="/images/favicon.png" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/gInterventionResp.css}" >
+
+    <!-- Required meta tags -->
+  <th:block th:replace="fragments/_head.html::head"></th:block>
+</head>
+
+<div class="container-scroller">
+
+  <!--_header-->
+  <th:block th:replace="/fragments/_header.html::header"></th:block>
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:/partials/_settings-panel.html -->
+      <div class="theme-setting-wrapper">
+        <div id="settings-trigger"><i class="ti-settings"></i></div>
+        <div id="theme-settings" class="settings-panel">
+          <i class="settings-close ti-close"></i>
+          <p class="settings-heading">SIDEBAR SKINS</p>
+          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
+          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
+          <p class="settings-heading mt-2">HEADER SKINS</p>
+          <div class="color-tiles mx-0 px-4">
+            <div class="tiles success"></div>
+            <div class="tiles warning"></div>
+            <div class="tiles danger"></div>
+            <div class="tiles info"></div>
+            <div class="tiles dark"></div>
+            <div class="tiles default"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+      <th:block th:replace="/fragments/_navGestInt.html::navGestInt"></th:block>
+
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                    <h4 th:if="${session.authorithies[0].authority =='User' }" class="card-title">Mes Interventions</h4>
+                    <h4 th:if="${session.authorithies[0].authority =='Admin' }" class="card-title">Interventions Par Departement</h4>
+<!--                    <h4 th:text="${matricule}" class="card-title">Interventions Par Departement</h4>,-->
+<!--                    <h4 th:text="${interventions.personnel.idPersonnel}" class="card-title">Interventions Par Departement</h4>-->
+                  <p class="card-description">
+                  </p>
+                  <div class="table-responsive">
+                    <table id="table_id"  class="table table-hover table-bordered">
+                      <thead>
+                        <tr>
+                            <th th:if="${session.authorithies[0].authority == 'Admin' }"> Matricule de l'etudiant </th>
+                          <th>Date de creation</th>
+                          <th>Departement</th>
+                            <th th:if="${session.authorithies[0].authority == 'Admin' }"> Categorie </th>
+                          <th>Description</th>
+                          <th>pieceJointes</th>
+                          <th>Statut</th>
+                          <th>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="interventions : ${interventions}">
+                            <td th:if="${session.authorithies[0].authority == 'Admin' }" > 
+                              <span th:text="${interventions.etudiant.matricule}"></span></td>
+                          <td th:text="${interventions.dateCreationInter}"></td>
+                          <td th:text="${interventions.departement.intituleDepartement}"></td>
+                            <td th:if="${session.authorithies[0].authority == 'Admin' }" > <span th:text="${interventions.categorie.intituleCategorie}"></span></td>
+                          <td th:text="${interventions.description}"></td>
+                          <td >
+                              <a th:each="piecesJointe : ${interventions.piecesJointes}"  th:href="@{/download/{idPieceJ}(idPieceJ=${piecesJointe.idPieceJointe})}"  ><i class="bi bi-file-earmark-binary-fill"></i></a>
+
+                          </td>
+                          <td>
+                            <span class="badge badge-outline-danger" th:if="${interventions.statut == 'nonTraite'}" th:text="${interventions.statut}">Danger</span>
+                              <span class="badge badge-success" th:if="${interventions.statut == 'traite'}" th:text="${interventions.statut}">Success</span>
+                            <span class="badge badge-warning" th:if="${interventions.statut == 'enCours'}" th:text="${interventions.statut}">Success</span>
+                              <i th:if="${interventions.statut != 'nonTraite' && session.authorithies[0].authority == 'Admin' && interventions.personnel.idPersonnel == matricule}" class="bi bi-emoji-grin"></i>
+
+                          </td>
+                          <td>
+
+                              <button type="button" class="btn btn-primary bi bi-eye-fill" data-toggle="modal" data-target="#interventionDetailsModal"></button>
+<!--                              <button type="button" class="btn btn-primary bi bi-eye-fill" href="#" data-toggle="modal" data-target="#terminerInterventionModal"></button>-->
+                              <a th:href="@{/cancel/{idIntervention}(idIntervention=${interventions.idIntervention})}" th:if="${interventions.statut == 'nonTraite' && session.authorithies[0].authority =='User' &&  !interventions.canceled}">
+                                  <button type="button" class="btn btn-danger bi bi-x-lg"></button>
+                              </a>
+                              <a  th:if="${interventions.statut == 'nonTraite' && session.authorithies[0].authority =='Admin' && !interventions.canceled}"  th:href="@{/prendreEnCharge/{idIntervention}(idIntervention=${interventions.idIntervention})}" >
+                                  <button type="button" class="btn btn-success bi bi-check-lg" ></button>
+                              </a>
+                              <a  th:if="${interventions.canceled}">
+                                  <button type="button" class="btn btn-outline-danger bi bi-x-circle" ></button>
+                              </a>
+                              <button th:if="${interventions.statut == 'enCours' && session.authorithies[0].authority =='Admin'}"
+                                      th:data-id="${interventions.idIntervention}"
+                                      onclick="showAlert(this)" data-toggle="modal"
+                                      data-target="#terminerInterventionModal"  type="button" class="btn btn-secondary bi bi-chat-square"></button>
+
+
+<!--                              th:href="@{/terminer/{idIntervention}(idIntervention=${interventions.idIntervention})}"-->
+                          </td>
+
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:/partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2022.  Client Web ING4-ISI <a href="https://www.institutsaintjean.org/" target="_blank">ISJ-ENT.</a> All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+
+    <th:block th:replace="fragments/_modalsIntervention.html::modalsIntervention"></th:block>
+    <th:block th:replace="fragments/_modalsIntervention.html::modalsValidationIntervention"></th:block>
+
+</div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+<script type="text/javascript" th:src="@{/js/moreIntervention.js}"></script>
+  <script src="/vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+<script th:inline="javascript">
+  var token = /*[[${accessToken}]]*/ 'valeur_par_defaut';
+</script>
+<script src="/js/creerIntervention.js"></script>
+  <script src="/js/off-canvas.js"></script>
+  <script src="/js/hoverable-collapse.js"></script>
+  <script src="/js/template.js"></script>
+  <script src="/js/settings.js"></script>
+  <script src="/js/todolist.js"></script>
+  
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <!-- End custom js for this page-->
+
+
+
+ <!-- plugins:js -->
+ <!-- endinject -->
+ <!-- Plugin js for this page -->
+ <script src="/vendors/chart.js/Chart.min.js"></script>
+ <script src="/vendors/datatables.net/jquery.dataTables.js"></script>
+ <script src="/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+ <script src="js/dataTables.select.min.js"></script>
+
+ <!-- Plugin js for this page -->
+ <script src="/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+ <script src="/vendors/select2/select2.min.js"></script>
+ <!-- End plugin js for this page -->
+
+ <!-- endinject -->
+ <!-- Custom js for this page-->
+ <script src="/js/dashboard.js"></script>
+ <script src="/js/Chart.roundedBarCharts.js"></script>
+
+  <!-- Custom js for this page-->
+  <script src="/js/file-upload.js"></script>
+  <script src="/js/typeahead.js"></script>
+  <script src="/js/select2.js"></script>
+  <!-- End custom js for this page-->
+
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:replace="fragments/_head.html::head"></th:block>
+</head>
+
+<body>
+
+
+    <th:block th:replace="fragments/_header.html::header"></th:block>
+
+
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+        <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
+            <h1>Bienvenu sur notre annuaire pour acte de naissance!!!</h1>
+            <h2>Notre équipe a conçu ce site uniquement pour satifaire vos requêtes</h2>
+            <a href="#about" class="btn-get-started scrollto">Allons-y</a>
+        </div>
+    </section>
+    <!-- End Hero -->
+
+    <main id="main">
+        <!-- ======= Clients Section ======= -->
+        <section id="clients" class="clients">
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center" data-aos="zoom-in" data-aos-delay="600">
+                        <img src="" class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="assets/img/clients/orange.png" class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="assets/img/clients/mairie4.png" class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center" data-aos="zoom-in" data-aos-delay="300">
+                        <img src="assets/img/clients/total.png" class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center" data-aos="zoom-in" data-aos-delay="400">
+                        <img src="assets/img/clients/communauté.png" class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center" data-aos="zoom-in" data-aos-delay="500">
+                        <img src="assets/img/clients/mtn.png" class="img-fluid" alt="">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center" data-aos="zoom-in" data-aos-delay="600">
+                        <img src="" class="img-fluid" alt="">
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        <!-- End Clients Section -->
+    </main>
+
+    <th:block th:replace="fragments/_footer.html::footer"></th:block>
+
+    <th:block th:replace="fragments/_js.html::js"></th:block>
+
+
+</body>
+
+</html>

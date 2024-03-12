@@ -1,0 +1,58 @@
+<html xmlns:th="http://www.thymeleaf.org" >
+
+<th:block th:fragment="header">
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container">
+            <div class="header-container d-flex align-items-center justify-content-between">
+                <div class="logo">
+                    <!-- <h1 class="text-light"><a href="index.html"><span>ActAnnu</span></a></h1> -->
+                    <!-- Uncomment below if you prefer to use an image logo -->
+                    <a th:href="@{/}"><img th:src="@{/assets/img/logo-annuarium.png}" alt="" class="img-fluid"></a>
+                </div>
+
+                <nav id="navbar" class="navbar">
+                    <ul>
+                        <li><a class="nav-link scrollto active" th:href="@{/}">Accueil</a></li>
+                        <li><a class="nav-link scrollto" href="#about">A propos</a></li>
+
+                        <li class="dropdown"><a href="#"><span>Act</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a th:href="@{/listactes}">Liste des actes</a></li>
+
+                                <li sec:authorize="isAuthenticated()"><a th:href="@{/enregistreracteform}">Enregistrer un acte</a></li>
+                                <li><a th:href="@{/rechercheracteform}">Rechercher un acte</a></li>
+
+                            </ul>
+                        </li>
+                        <li><a class="nav-link scrollto" href="demande.html">Demander un acte</a></li>
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary btn-icon rounded-pill hide-arrow getstarted scrollto" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bx bx-user"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" style="">
+                                <li><a class="dropdown-item" href="javascript:void(0);" sec:authorize="isAuthenticated()" th:utext="${session.userName}">test</a></li>
+                                <li sec:authorize="isAuthenticated()"><a class="dropdown-item" href="javascript:void(0);">Profil</a></li>
+                                <li sec:authorize="!isAuthenticated()"><a class="dropdown-item" th:href="@{/login}">Connexion</a></li>
+
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li sec:authorize="isAuthenticated()"><a class="dropdown-item" th:href="@{/logout}">Déconnexion</a></li>
+                            </ul>
+                        </div>
+                    </ul>
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav>
+                <!-- .navbar -->
+
+            </div>
+            <!-- End Header Container -->
+        </div>
+    </header>
+    <!-- End Header -->
+
+</th:block>
+
+</html>

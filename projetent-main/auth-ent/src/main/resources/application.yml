@@ -1,0 +1,40 @@
+server:
+  port: 9084
+  servlet:
+    context-path: /oauth
+
+health:
+  config:
+    enabled: false
+
+# ===============================
+# = DATABASE STUFF
+# ===============================
+spring:
+  application:
+    name: oauth
+    cloud:
+      config:
+        enabled: true
+        failFast: true
+        label: master
+        discovery:
+          enabled: true
+          serviceId: configserver
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      #defaultZone: ${EUREKA_SERVICE_URL:http://localhost:5000}/eureka/
+
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:5000}/eureka/
+#      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8080}/discovery/eureka
+# ===============================
+# = Key to sign jwt tokens
+# ===============================
+signing:
+  key: hufkhjbdszp$$kl$@jhjkhkkk

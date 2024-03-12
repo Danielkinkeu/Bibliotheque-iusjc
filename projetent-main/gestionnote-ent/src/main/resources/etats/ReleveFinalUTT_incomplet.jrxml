@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 8.1.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReleveFinal" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="NoPages" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8dc6c1c5-97c6-4c3b-ad57-5f6bcf1d92fa">
+	<property name="ireport.zoom" value="1.3310000000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="46"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Local ISJ"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="Crosstab_CH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Crosstab_CG" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Crosstab_CT" mode="Opaque" backcolor="#005FB3">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Crosstab_CD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="filiere" class="java.lang.String"/>
+	<parameter name="classe" class="java.lang.String"/>
+	<parameter name="matricule" class="java.lang.String"/>
+	<parameter name="semestr" class="java.lang.String"/>
+	<parameter name="speci" class="java.lang.String"/>
+	<parameter name="listeMatricules" class="java.lang.String"/>
+	<parameter name="decision" class="java.lang.String"/>
+	<parameter name="numero_releve" class="java.lang.Integer"/>
+	<parameter name="nom_etudiant" class="java.lang.String"/>
+	<parameter name="date_naissance" class="java.lang.String"/>
+	<parameter name="annee_academique" class="java.lang.Integer"/>
+	<parameter name="sexe" class="java.lang.String"/>
+	<parameter name="image_isj" class="java.lang.String"/>
+	<parameter name="image_uy1" class="java.lang.String"/>
+	<parameter name="image_ensp" class="java.lang.String"/>
+	<parameter name="niveau" class="java.lang.Integer"/>
+	<parameter name="numero" class="java.lang.Long"/>
+	<parameter name="type_releve" class="java.lang.String"/>
+	<parameter name="specialites" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[Call releve_note($P{classe},$P{matricule},$P{filiere},$P{annee_academique},$P{niveau},$P{semestr},$P{speci},$P{listeMatricules},$P{decision},$P{numero_releve})]]>
+	</queryString>
+	<field name="matricule" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nom_prenom" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="code_ue" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codemo" class="java.lang.String"/>
+	<field name="module" class="java.lang.String"/>
+	<field name="moy_mod" class="java.lang.Double"/>
+	<field name="cred_mod" class="java.lang.String"/>
+	<field name="ue" class="java.lang.String"/>
+	<field name="annee" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="moyenne" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="decision" class="java.lang.String"/>
+	<field name="decisions" class="java.lang.String"/>
+	<field name="grade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="credits" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Sessio" class="java.lang.String"/>
+	<field name="semestre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="penalites" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mgp_sem" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="grade_sem" class="java.lang.String"/>
+	<field name="moy_sem" class="java.lang.Float"/>
+	<field name="cred_sem" class="java.lang.String"/>
+	<field name="rang" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rang_an" class="java.lang.String"/>
+	<field name="mgp_an" class="java.lang.Float"/>
+	<field name="moy_an" class="java.lang.Float"/>
+	<field name="grade_an" class="java.lang.String"/>
+	<field name="credAn" class="java.lang.Integer"/>
+	<field name="admis" class="java.lang.String"/>
+	<field name="lieu_naissance" class="java.lang.String"/>
+	<field name="grade_module" class="java.lang.String"/>
+	<variable name="ue_variable" class="java.lang.String">
+		<variableExpression><![CDATA[$F{ue}]]></variableExpression>
+	</variable>
+	<group name="Semestre">
+		<groupExpression><![CDATA[$F{semestre}]]></groupExpression>
+	</group>
+	<group name="Module">
+		<groupExpression><![CDATA[$F{module}]]></groupExpression>
+		<groupHeader>
+			<band height="12"/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="90" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="196" y="0" width="383" height="15" uuid="371ed0fd-9940-4862-9eb9-49846b989194"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Institut Saint Jean - PV de jury de diplôme DU_IRIS-ISI/MSI-01-2021"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="30" width="89" height="14" uuid="8cbcc6ce-5f2a-4fd0-a4f4-2e3e5edce39b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Nom complet]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="58" width="88" height="14" uuid="af5ec491-80f4-4449-b95c-084315f78033"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Date naissance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="44" width="88" height="14" uuid="0e8cf25f-db9b-4e9b-909d-ea20667cb226"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Genre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="50" width="78" height="14" uuid="1dbd1084-16be-449b-8bf1-fcffab8b360d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[N° Matricule:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="89" y="30" width="371" height="14" forecolor="#000103" uuid="7d2fd85f-6363-454f-a0a3-9497d9501b24"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nom_etudiant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="80" y="58" width="104" height="14" uuid="0060bbc7-9763-4eaa-a184-856325579b70"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date_naissance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="85" y="44" width="120" height="14" uuid="8069aa38-3046-4f4e-bd6f-2e31ee7f7eae"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{sexe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="50" width="70" height="14" forecolor="#000103" uuid="d498047f-675a-4131-b48b-f2da263a6caa"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{matricule}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="553" y="30" width="186" height="14" uuid="4ff69894-d38b-4b82-9839-b4d750a1c0fa"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Décision du jury (Obtention Diplôme IRIS)"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="72" width="87" height="14" uuid="389a74c4-05ac-4c3c-adcc-21f5af76b190"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Lieu naissance]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="72" width="194" height="14" uuid="cc1c1963-b975-4c1f-8c26-cbaa31329e82"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lieu_naissance}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="80" y="0" width="115" height="15" uuid="0c6f6319-7f5c-4e49-93f7-1379046b39e9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="579" y="1" width="120" height="15" uuid="f5c512e4-67d3-4e32-a858-dca85695f781">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numero}+1]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="740" y="31" width="30" height="12" uuid="9f979614-cc6c-4817-815d-a9c33f5a4871"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Oui"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="770" y="31" width="30" height="12" uuid="7575437e-29db-403c-a937-43be93e2e07e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Non"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="555" y="44" width="184" height="14" uuid="b26a0f8b-fa3b-44ea-8591-fb5180b70d87"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Année Obtention Bac]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="740" y="44" width="59" height="12" uuid="08f75dfc-8735-4b89-8219-a1edf6ae79da"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+			</textField>
+			<staticText>
+				<reportElement x="555" y="56" width="184" height="14" uuid="1ffe5d69-597f-4345-b38a-3b874ab270ca"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Branche]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="745" y="56" width="59" height="12" uuid="95e8bfb0-ddaf-4d54-aaf0-7aab27214a9b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{filiere}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="556" y="68" width="184" height="14" uuid="89e55322-159f-47a5-9bd3-6e1964e91880"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Filière]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="740" y="68" width="59" height="12" uuid="549946ce-d8f6-4e78-8a61-de960365399f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{specialites}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="63">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="260" y="11" width="89" height="14" uuid="84ce4f65-aa5d-47fb-b589-429221670d8c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Nom complet]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="349" y="39" width="80" height="12" uuid="035e9997-0ed0-4a10-881d-4c85fdd47446">
+					<printWhenExpression><![CDATA[$P{type_releve}.equalsIgnoreCase( "annuel" )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{grade_an}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="160" y="0" width="555" height="11" uuid="09926ba7-faba-44ea-946b-b635c93912d4">
+					<printWhenExpression><![CDATA[$P{type_releve}.equalsIgnoreCase( "annuel" )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Récapitulatif]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="261" y="39" width="88" height="12" uuid="7515a176-a751-4d43-b496-cc7afbefafc5">
+					<printWhenExpression><![CDATA[$P{type_releve}.equalsIgnoreCase( "annuel" )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Grade Annuel]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="349" y="11" width="371" height="14" forecolor="#000103" uuid="60f3d536-cf9a-431c-a727-b38694338636"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nom_etudiant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="261" y="25" width="88" height="12" uuid="1b690323-e162-464f-b5f0-46cd7d7649f0">
+					<printWhenExpression><![CDATA[$P{type_releve}.equalsIgnoreCase( "annuel" )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Crédits obtenus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="261" y="51" width="88" height="12" uuid="490bab45-f6d6-4e97-a81c-454e22f85e84">
+					<printWhenExpression><![CDATA[//$P{type_releve}.equalsIgnoreCase( "Annuel" ) && !$F{admis}.equalsIgnoreCase( "Redouble" )
+$P{type_releve}.equalsIgnoreCase( "Annuel" )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Niveau de langue]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="350" y="51" width="83" height="12" uuid="90652c6c-5611-4986-ae15-97d3cdebd146">
+					<printWhenExpression><![CDATA[//$P{type_releve}.equalsIgnoreCase( "Annuel" ) && !$F{admis}.equalsIgnoreCase( "Redouble" )
+$P{type_releve}.equalsIgnoreCase( "Annuel" )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+			</textField>
+			<textField>
+				<reportElement x="350" y="25" width="79" height="14" uuid="992836a9-f3cf-440d-b97c-74a4417768d7">
+					<printWhenExpression><![CDATA[$P{type_releve}.equalsIgnoreCase( "annuel" )]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="8" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{credAn}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="63" splitType="Immediate">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<elementGroup/>
+			<crosstab>
+				<reportElement x="1" y="3" width="800" height="60" uuid="d16312e5-261a-4f1b-8fa7-3c7183b18771">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.crosstab.style.header" value="Crosstab_CH"/>
+					<property name="com.jaspersoft.studio.crosstab.style.group" value="Crosstab_CG"/>
+					<property name="com.jaspersoft.studio.crosstab.style.total" value="Crosstab_CT"/>
+					<property name="com.jaspersoft.studio.crosstab.style.detail" value="Crosstab_CD"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<crosstabDataset>
+					<dataset resetType="Report"/>
+				</crosstabDataset>
+				<rowGroup name="semestre" width="60" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{semestre}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents mode="Opaque" style="Crosstab_CH">
+							<textField>
+								<reportElement x="0" y="0" width="60" height="20" uuid="bb230e64-30e3-4ee0-ac18-ea6d09e0ffe8"/>
+								<textFieldExpression><![CDATA[$V{semestre}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents mode="Opaque" style="Crosstab_CT"/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="code_ue" height="20" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{code_ue}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents mode="Opaque" style="Crosstab_CH">
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+								<reportElement style="Crosstab_CT" x="0" y="0" width="60" height="20" backcolor="#FCFEFF" uuid="1b4aca59-4427-49b6-b1b1-cdb101c59da6"/>
+								<textElement verticalAlignment="Middle"/>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents mode="Opaque" style="Crosstab_CT">
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="20" forecolor="#FFFFFF" uuid="7c60354a-2fee-4c8a-83f7-8101f8debd52"/>
+								<text><![CDATA[Total]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="credits_MEASURE" class="java.lang.String">
+					<measureExpression><![CDATA[$F{credits}]]></measureExpression>
+				</measure>
+				<measure name="grade_measure" class="java.lang.String">
+					<measureExpression><![CDATA[$F{grade}]]></measureExpression>
+				</measure>
+				<measure name="Sessio_measure" class="java.lang.String">
+					<measureExpression><![CDATA[$F{Sessio}]]></measureExpression>
+				</measure>
+				<measure name="grade_sem_measure" class="java.lang.String">
+					<measureExpression><![CDATA[$F{grade_sem}]]></measureExpression>
+				</measure>
+				<measure name="cred_sem_measure" class="java.lang.String">
+					<measureExpression><![CDATA[$F{cred_sem}]]></measureExpression>
+				</measure>
+				<measure name="ue_measure" class="java.lang.String">
+					<measureExpression><![CDATA[$F{ue}]]></measureExpression>
+				</measure>
+				<crosstabCell width="60" height="20">
+					<cellContents mode="Opaque" style="Crosstab_CD">
+						<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+							<reportElement x="0" y="0" width="60" height="20" printWhenGroupChanges="Semestre" uuid="0795a353-739b-44f3-b92f-117378368409"/>
+							<textFieldExpression><![CDATA[$V{grade_measure}!=null?($V{code_ue}+"-"+$V{ue_measure}+"\n"+
+"__________\n"+
+"Grade: "+$V{grade_measure}+"\n"+"Credits: "+$V{credits_MEASURE}+"\n"+"Session: "+$V{Sessio_measure}):null]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="70" height="20" columnTotalGroup="code_ue">
+					<cellContents mode="Opaque" style="Crosstab_CT">
+						<textField textAdjust="StretchHeight">
+							<reportElement style="Crosstab_CD" x="0" y="0" width="70" height="20" forecolor="#FFFFFF" uuid="94b4c086-a4de-4dbf-9f4a-98732f0ba60d"/>
+							<textFieldExpression><![CDATA["Grade: "+$V{grade_sem_measure}+"\n"+"Credits: "+$V{cred_sem_measure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="60" height="20" rowTotalGroup="semestre">
+					<cellContents mode="Opaque" style="Crosstab_CT"/>
+				</crosstabCell>
+				<crosstabCell width="70" height="20" rowTotalGroup="semestre" columnTotalGroup="code_ue">
+					<cellContents mode="Opaque" style="Crosstab_CT"/>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>

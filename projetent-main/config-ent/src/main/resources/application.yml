@@ -1,0 +1,20 @@
+server:
+  port: 9890
+
+spring:
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          uri: ${CONFIG_SERVICE_GIT_URL:file:///C:/Users/COCO/AppData/Local/microservices-conf/config-projet-tutore}
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+#      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8080}/discovery/eureka
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:5000}/eureka

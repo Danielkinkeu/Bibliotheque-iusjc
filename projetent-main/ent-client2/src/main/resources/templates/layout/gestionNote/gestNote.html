@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" html xmlns:th="http://www.thymeleaf.org" >
+
+  <head>
+    <!-- Required meta tags -->
+    <th:block th:replace="./fragments/_head.html::head"></th:block>
+
+  </head>
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+
+    <!--_header-->
+    <th:block th:replace="./fragments/_header.html::header"></th:block>
+
+    <!--fin header-->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_settings-panel.html -->
+      <div class="theme-setting-wrapper">
+        <div id="settings-trigger"><i class="ti-settings"></i></div>
+        <div id="theme-settings" class="settings-panel">
+          <i class="settings-close ti-close"></i>
+          <p class="settings-heading">SIDEBAR SKINS</p>
+          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
+          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
+          <p class="settings-heading mt-2">HEADER SKINS</p>
+          <div class="color-tiles mx-0 px-4">
+            <div class="tiles success"></div>
+            <div class="tiles warning"></div>
+            <div class="tiles danger"></div>
+            <div class="tiles info"></div>
+            <div class="tiles dark"></div>
+            <div class="tiles default"></div>
+          </div>
+        </div>
+      </div>
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+      <th:block th:replace="./fragments/_navNotes.html::navNotes"></th:block>
+
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="row">
+                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                  <h3 class="font-weight-bold">Welcome <span th:text="${session.name}"></span></h3>
+                  <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have <span class="text-primary">3 unread alerts!</span></h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 grid-margin stretch-card">
+              <div class="card tale-bg">
+                <div class="card-people mt-auto" width="20px">
+                  <img src="../../images/dashboard/Scrum board-amico.png" alt="people" >
+                  <div class="weather-info">
+                    <div class="d-flex">
+                      <div>
+                        <h2 class="mb-0 font-weight-normal"><i class="icon-sun mr-2"></i>31<sup>C</sup></h2>
+                      </div>
+                      <div class="ml-2">
+                        <h4 class="location font-weight-normal">Yaoundé</h4>
+                        <h6 class="font-weight-normal">Cameroun</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 grid-margin transparent"  th:if="${session.authorithies[0].authority =='Admin' }">
+              <div class="row">
+                <div class="col-md-6 mb-4 stretch-card transparent">
+                  <div class="card card-tale">
+                    <div class="card-body">
+                      <p class="mb-4">Total D'étudiants</p>
+                      <p class="fs-30 mb-2" th:text="${nbstudent}">1000</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4 stretch-card transparent">
+                  <div class="card card-dark-blue">
+                    <div class="card-body">
+                      <p class="mb-4">Total enseignants</p>
+                      <p class="fs-30 mb-2" th:text="${nbenseignant}">61344</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5 grid-margin stretch-card" th:if="${session.authorithies[0].authority =='Etudiant' }">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">To Do Lists</h4>
+                  <div class="list-wrapper pt-2">
+                    <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
+                      <li>
+                        <div class="form-check form-check-flat">
+                          <label class="form-check-label">
+                            <input class="checkbox" type="checkbox">
+                            Meeting with Urban Team
+                          </label>
+                        </div>
+                        <i class="remove ti-close"></i>
+                      </li>
+                      <li class="completed">
+                        <div class="form-check form-check-flat">
+                          <label class="form-check-label">
+                            <input class="checkbox" type="checkbox" checked>
+                            Duplicate a project for new customer
+                          </label>
+                        </div>
+                        <i class="remove ti-close"></i>
+                      </li>
+                      <li>
+                        <div class="form-check form-check-flat">
+                          <label class="form-check-label">
+                            <input class="checkbox" type="checkbox">
+                            Project meeting with CEO
+                          </label>
+                        </div>
+                        <i class="remove ti-close"></i>
+                      </li>
+                      <li class="completed">
+                        <div class="form-check form-check-flat">
+                          <label class="form-check-label">
+                            <input class="checkbox" type="checkbox" checked>
+                            Follow up of team zilla
+                          </label>
+                        </div>
+                        <i class="remove ti-close"></i>
+                      </li>
+                      <li>
+                        <div class="form-check form-check-flat">
+                          <label class="form-check-label">
+                            <input class="checkbox" type="checkbox">
+                            Level up for Antony
+                          </label>
+                        </div>
+                        <i class="remove ti-close"></i>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="add-items d-flex mb-0 mt-2">
+                    <input type="text" class="form-control todo-list-input"  placeholder="Add new task">
+                    <button class="add btn btn-icon text-primary todo-list-add-btn bg-transparent"><i class="icon-circle-plus"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--              <div class="row">-->
+            <!--                <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">-->
+            <!--                  <div class="card card-light-blue">-->
+            <!--                    <div class="card-body">-->
+            <!--                      <p class="mb-4">Number of Meetings</p>-->
+            <!--                      <p class="fs-30 mb-2">34040</p>-->
+            <!--                      <p>2.00% (30 days)</p>-->
+            <!--                    </div>-->
+            <!--                  </div>-->
+            <!--                </div>-->
+            <!--                <div class="col-md-6 stretch-card transparent">-->
+            <!--                  <div class="card card-light-danger">-->
+            <!--                    <div class="card-body">-->
+            <!--                      <p class="mb-4">Number of Clients</p>-->
+            <!--                      <p class="fs-30 mb-2">47033</p>-->
+            <!--                      <p>0.22% (30 days)</p>-->
+            <!--                    </div>-->
+            <!--                  </div>-->
+            <!--                </div>-->
+            <!--              </div>-->
+          </div>
+
+        </div>
+
+        <!-- content-wrapper ends -->
+
+
+
+        <!-- Modal for modlanotes  -->
+        <th:block th:replace="./fragments/_modalsNotes.html::modalsNotes"></th:block>
+
+        <!-- End Modal for  moadlnotes  -->
+
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <th:block th:replace="./fragments/_footer.html::footer"></th:block>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+    <th:block th:replace="./fragments/_js.html::js"></th:block>
+
+  </div>
+   <!-- End custom js for this page-->
+</body>
+
+</html>
+

@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: actuator-sample
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: actuator-sample
+    spec:
+      containers:
+        - name: actuator-sample
+          image: registry.gitlab.com/marcolenzo/actuator-sample
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9084
+      imagePullSecrets:
+        - name: registry.gitlab.com

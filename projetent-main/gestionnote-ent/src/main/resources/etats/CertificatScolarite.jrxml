@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 8.1.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="certificatScolarite" language="groovy" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="20" bottomMargin="20" uuid="3934eca8-fa5d-488c-aadf-c043a486df99">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="68"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Local ISJ"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="filiere" class="java.lang.String"/>
+	<parameter name="nom_etudiant" class="java.lang.String"/>
+	<parameter name="date_naissance" class="java.lang.String"/>
+	<parameter name="annee_academique" class="java.lang.Integer"/>
+	<parameter name="sexe" class="java.lang.String"/>
+	<parameter name="matricule" class="java.lang.String"/>
+	<parameter name="image_isj" class="java.lang.String"/>
+	<parameter name="image_uy1" class="java.lang.String"/>
+	<parameter name="image_ensp" class="java.lang.String"/>
+	<parameter name="niveau" class="java.lang.Integer"/>
+	<parameter name="numero" class="java.lang.Long"/>
+	<parameter name="type_releve" class="java.lang.String"/>
+	<parameter name="semestr" class="java.lang.String"/>
+	<parameter name="speci" class="java.lang.String"/>
+	<parameter name="numero_releve" class="java.lang.Integer"/>
+	<parameter name="specialites" class="java.lang.String"/>
+	<parameter name="listeMatricules" class="java.lang.String"/>
+	<parameter name="date_jury" class="java.lang.String"/>
+	<parameter name="note_cycle_licence" class="java.lang.Double"/>
+	<parameter name="branche" class="java.lang.String"/>
+	<parameter name="date_jour" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[Call attestation_reussite($P{matricule},$P{filiere},$P{annee_academique},$P{niveau},$P{semestr},$P{speci},$P{listeMatricules},$P{numero_releve},$P{note_cycle_licence})]]>
+	</queryString>
+	<field name="nom" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nom"/>
+		<property name="com.jaspersoft.studio.field.label" value="nom"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="candidat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prenom" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="prenom"/>
+		<property name="com.jaspersoft.studio.field.label" value="prenom"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="candidat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date_naissance" class="java.time.LocalDateTime">
+		<property name="com.jaspersoft.studio.field.name" value="date_naissance"/>
+		<property name="com.jaspersoft.studio.field.label" value="date_naissance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="candidat"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="matricule" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="matricule"/>
+		<property name="com.jaspersoft.studio.field.label" value="matricule"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="etudiant"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="filiere" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="libelle"/>
+		<property name="com.jaspersoft.studio.field.label" value="filiere"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="filiere"/>
+	</field>
+	<field name="specialite" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="libelle"/>
+		<property name="com.jaspersoft.studio.field.label" value="specialite"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="specialite"/>
+	</field>
+	<field name="niveau" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="numero"/>
+		<property name="com.jaspersoft.studio.field.label" value="niveau"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="niveau"/>
+	</field>
+	<field name="lieu_naissance" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="lieu_naissance"/>
+		<property name="com.jaspersoft.studio.field.label" value="lieu_naissance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="candidat"/>
+	</field>
+	<field name="grade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="grade"/>
+		<property name="com.jaspersoft.studio.field.label" value="grade"/>
+	</field>
+	<field name="pere" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nom_du_pere"/>
+		<property name="com.jaspersoft.studio.field.label" value="pere"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="candidat"/>
+	</field>
+	<field name="mere" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nom_de_la_mere"/>
+		<property name="com.jaspersoft.studio.field.label" value="mere"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="candidat"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="70" width="210" height="13" uuid="b8ef3ccf-51c1-4f3a-83b1-c0d41f2cec8f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[B.P. : 749 Yaoundé – Tel : +(237) 657 07 98 07/651 36 96 96]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="83" width="210" height="13" uuid="9b87e875-a948-4a9b-bc15-c285e5102590"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Email : info@institutsaintjean.org]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="96" width="210" height="13" uuid="e0a4e415-0f27-4bf9-a254-ce5abed3f336"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Site Web: www.institutsaintjean.org]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="210" height="13" uuid="3e515fad-753b-473a-8a6d-86cb7c6aae6b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSTITUT SAINT JEAN]]></text>
+			</staticText>
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="44" y="13" width="135" height="57" uuid="1fbca7d1-d9d8-4d2f-bb13-e4b1188e345b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{image_isj}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="0" y="119" width="513" height="1" uuid="f80ea1d3-5685-4e1d-a8ea-b4528fd5e13c"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="130" width="513" height="20" uuid="6ddf3834-8a3c-429b-9e8c-c01ed44681b8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CERTIFICAT DE SCOLARITE"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="200" width="513" height="15" uuid="a7a4ed62-63e2-4fb4-91b2-104f947a0aef">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Je soussigné Père JEAN HERVE, Directeur de l’Institut Saint Jean, certifie que : "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="240" width="90" height="15" uuid="4e1f45b4-705d-41e8-88ba-9befeaa53ad8"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[M./Mme/Mlle : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="91" y="241" width="426" height="14" uuid="4c452d9d-e70a-4d11-9286-9686514e5351"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nom_etudiant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="255" width="100" height="15" uuid="db2dcb7b-5d13-430f-bd62-7b9029ad1a30"/>
+				<textElement>
+					<font size="10" isItalic="true" pdfFontName="Helvetica-Oblique"/>
+				</textElement>
+				<text><![CDATA[Mr, Ms]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="270" width="100" height="15" uuid="296140cd-86f4-413c-99d6-05434c446f90"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Né(e) le :]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement isPrintRepeatedValues="false" x="101" y="270" width="151" height="15" uuid="6c438f41-fc87-42f1-b947-bd4e96304425"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date_naissance}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="285" width="100" height="15" uuid="debc5f25-581b-428a-8aee-8a1875ac767e"/>
+				<textElement>
+					<font size="10" isItalic="true" pdfFontName="Helvetica-Oblique"/>
+				</textElement>
+				<text><![CDATA[Born on]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="300" width="161" height="15" uuid="489cde10-bb05-4591-949d-c7558b05e908"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Inscrit(e) sous le matricule N° :]]></text>
+			</staticText>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="162" y="300" width="100" height="15" uuid="24c58ca4-ae72-4b2b-aa7c-9b0faca2b268"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{matricule}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="315" width="112" height="15" uuid="eb963d96-dc04-475d-a2e4-f842b877eba9"/>
+				<textElement>
+					<font size="10" isItalic="true" pdfFontName="Helvetica-Oblique"/>
+				</textElement>
+				<text><![CDATA[Registered under N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="252" y="284" width="28" height="15" uuid="b66a82a9-b935-49b1-b6d4-0062d95674b2"/>
+				<textElement textAlignment="Left">
+					<font size="10" isItalic="true" pdfFontName="Helvetica-Oblique"/>
+				</textElement>
+				<text><![CDATA[in]]></text>
+			</staticText>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="1" y="330" width="111" height="14" uuid="913c7df4-f984-41b8-bc70-c258db498664">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fils/Fille de M. "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="424" width="194" height="15" uuid="b04bb24c-06ea-40f8-a6e2-8062bc6e68dc"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Pour le compte de l’année académique :]]></text>
+			</staticText>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="196" y="424" width="274" height="15" uuid="5f9680bb-dadb-4900-b184-4b4f9ac64ca4"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{annee_academique} + "/" + ($P{annee_academique}+1)]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="439" width="194" height="20" uuid="1a7b18b4-f8b1-478a-a67b-894d5b3c4576"/>
+				<textElement>
+					<font size="10" isItalic="true" pdfFontName="Helvetica-Oblique"/>
+				</textElement>
+				<text><![CDATA[On behalf of the academic year:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="480" width="513" height="19" uuid="59f1fa2c-4940-4547-b816-d4b433788b03"/>
+				<textElement>
+					<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[En foi de quoi ce certificat lui est délivré pour servir et valoir ce que de droit.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="499" width="513" height="15" uuid="7637ed22-45a4-4d15-b20a-200cb4628725"/>
+				<textElement>
+					<font size="10" isItalic="true" pdfFontName="Helvetica-Oblique"/>
+				</textElement>
+				<text><![CDATA[In witness whereof, this certificate is issued for all legal purposes.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="234" y="550" width="280" height="20" uuid="15b5f61b-ae39-460c-a4bf-1433ede609a8"/>
+				<textElement>
+					<font size="12" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Le Directeur de l’Institut Saint Jean]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="770" width="513" height="10" uuid="7b03b15c-a7f2-407a-b3ed-29bd326bf94a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Il n'est délivré qu'une seule attestation de réussite]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="781" width="513" height="21" uuid="e62797cd-32e4-479d-a876-bd9e6e09e0b5"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8" isItalic="true" pdfFontName="Helvetica-Oblique"/>
+				</textElement>
+				<text><![CDATA[Only one copy of this certificate is delivered]]></text>
+			</staticText>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="281" y="270" width="236" height="14" uuid="9ae445d4-8c30-4b89-b392-3de4cd00a0c5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lieu_naissance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="1" y="344" width="111" height="14" uuid="e9bc8c39-24f0-4654-8135-a33d37eb7802">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font size="9" isItalic="true" pdfFontName="Helvetica-Oblique"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Son/Daughter of Mr "]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="4" y="770" width="513" height="1" uuid="2b8f35c0-f1b7-4188-a955-d817760a6163"/>
+			</line>
+			<textField>
+				<reportElement x="1" y="215" width="513" height="15" uuid="33d75d8a-3bc0-454b-8685-bb46937e959f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="9" isItalic="true" pdfFontName="Helvetica-Oblique"/>
+				</textElement>
+				<textFieldExpression><![CDATA["I, the undersigned, Père Jean Hervé,  the Director of the Institut Saint Jean of Yaoundé, certify that: "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="211" y="388" width="302" height="36" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="43d21bcc-8e99-4211-a27d-36d73bd7ee18"/>
+				<textElement markup="none">
+					<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{filiere}.toUpperCase()+" " +(($P{filiere}.toLowerCase().startsWith( "master" ))? ($P{niveau}-3):$P{niveau})+", " + $P{speci}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="409" width="210" height="15" isRemoveLineWhenBlank="true" uuid="04d785c6-cea6-4f5d-927a-55ae003cb87f"/>
+				<textElement>
+					<font size="10" isItalic="true" pdfFontName="Helvetica-Oblique"/>
+				</textElement>
+				<text><![CDATA[Is a student at the Institut Saint Jean in]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="234" y="570" width="280" height="20" uuid="91fa9494-5c57-4016-bce3-32d2f682d329"/>
+				<textElement>
+					<font size="10" isBold="false" isItalic="true" pdfFontName="Helvetica-Oblique"/>
+				</textElement>
+				<text><![CDATA[The Director of Institut Saint Jean]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="252" y="270" width="28" height="15" uuid="cf7a2ead-945a-4712-904f-b0e8b0f220c8"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[à :]]></text>
+			</staticText>
+			<textField pattern="d MMM yyyy">
+				<reportElement isPrintRepeatedValues="false" x="370" y="0" width="144" height="15" uuid="526a5a75-52c0-400e-9ae3-52ae1c71b2b8"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Yaoundé, le " + $P{date_jour}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="113" y="330" width="404" height="15" uuid="3f0a5dff-d46e-44e8-909f-a5e74b15cab9"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pere}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="2" y="360" width="111" height="14" uuid="8d1baa02-bf98-48a6-8f4e-9f0ef1a84b62">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Et de Mme "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="2" y="374" width="111" height="14" uuid="25225353-0d01-4d13-9b3e-5d95a9f7d3be">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font size="9" isItalic="true" pdfFontName="Helvetica-Oblique"/>
+				</textElement>
+				<textFieldExpression><![CDATA["And of Mz "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement isPrintRepeatedValues="false" x="114" y="360" width="400" height="15" uuid="1708a968-7da7-4c69-8ac1-beb87191f705"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mere}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="388" width="210" height="21" isRemoveLineWhenBlank="true" uuid="69610e98-403b-4d3a-ba8c-304bf04ee67f"/>
+				<textElement>
+					<font size="10" isItalic="false" pdfFontName="Helvetica-Oblique"/>
+				</textElement>
+				<text><![CDATA[Est bien étudiant(e) à l’Institut Saint Jean en]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="150" width="513" height="20" uuid="33ae1949-c328-4a83-b395-b76dbe3fd902">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="14" isBold="false" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["SCHOOL CERTIFICATE"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

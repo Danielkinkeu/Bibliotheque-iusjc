@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PVSynthèse" language="groovy" pageWidth="1190" pageHeight="842" orientation="Landscape" columnWidth="1150" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0418ec8a-624a-4bbe-995e-bfac626ccc69">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hTextAlign="Center" hImageAlign="Center"/>
+	<parameter name="semestre" class="java.lang.String"/>
+	<parameter name="filiere" class="java.lang.String"/>
+	<parameter name="specialites" class="java.lang.String"/>
+	<parameter name="niveau" class="java.lang.Integer"/>
+	<parameter name="annee" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[call stats($P{annee}, $P{semestre}, $P{niveau}, $P{filiere},$P{specialites})]]>
+	</queryString>
+	<field name="intituleMod" class="java.lang.String"/>
+	<field name="lib" class="java.lang.String"/>
+	<field name="typ_ev" class="java.lang.String"/>
+	<field name="effectif" class="java.lang.Long"/>
+	<field name="nb_moyenne" class="java.lang.Long"/>
+	<field name="moyenne" class="java.lang.Double"/>
+	<field name="pourcentage_reuss" class="java.lang.String"/>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="13" width="1150" height="31" uuid="6afdadcb-c0ae-4c26-bf87-3e6a8b1f3c36"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Synthèse du Procès Verbal du " + $P{semestre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="44" width="1150" height="24" uuid="4258a884-d978-4557-9fb6-44c6318b3cbc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{filiere}+" - "+$P{specialites} + " " + $P{niveau}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<crosstab>
+				<reportElement x="0" y="0" width="1150" height="42" uuid="d3bafbe4-0b7a-4bfa-8f66-69eeaa378a41"/>
+				<crosstabHeaderCell>
+					<cellContents>
+						<staticText>
+							<reportElement style="Crosstab Data Text" x="0" y="117" width="106" height="30" uuid="4c6b7e40-7042-454f-85e2-e7a7238f8602"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font isBold="true"/>
+							</textElement>
+							<text><![CDATA[Effectif]]></text>
+						</staticText>
+						<staticText>
+							<reportElement style="Crosstab Data Text" x="0" y="147" width="106" height="30" uuid="dc054c21-415a-4477-b7af-243af04e1b0b"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font isBold="true"/>
+							</textElement>
+							<text><![CDATA[Nombre de moyennes]]></text>
+						</staticText>
+						<staticText>
+							<reportElement style="Crosstab Data Text" x="0" y="177" width="106" height="30" uuid="6e792426-3bb5-438a-9f98-e50820fc2164"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font isBold="true"/>
+							</textElement>
+							<text><![CDATA[Moyenne]]></text>
+						</staticText>
+						<staticText>
+							<reportElement style="Crosstab Data Text" x="0" y="207" width="106" height="30" uuid="02ab147b-336b-434f-a5a3-73c08d827539"/>
+							<box>
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font isBold="true"/>
+							</textElement>
+							<text><![CDATA[Pourcentage de réussite]]></text>
+						</staticText>
+					</cellContents>
+				</crosstabHeaderCell>
+				<rowGroup name="intituleMod" width="106">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{intituleMod}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Transparent">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="intituleMod1" height="41">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{intituleMod}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="43" height="41" uuid="76dcd14b-b19d-4226-848b-90cb1a743085"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+									<font size="5" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{intituleMod1}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="lib" height="46">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{lib}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="43" height="46" uuid="6f15a33c-896d-473c-9943-0448a1d6eb0e"/>
+								<textElement verticalAlignment="Middle">
+									<font size="6" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{lib}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="typ_ev" height="30">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{typ_ev}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="43" height="30" uuid="edd63584-bd0e-4375-9660-4616adca955f"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{typ_ev}.equals("SN") ? "EXA"
+: $V{typ_ev}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="effectif" height="30">
+					<bucket class="java.lang.Long">
+						<bucketExpression><![CDATA[$F{effectif}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="43" height="30" uuid="768652d4-d502-4843-8bb2-12106173a28f"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{effectif}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="nb_moy" height="30">
+					<bucket class="java.lang.Long">
+						<bucketExpression><![CDATA[$F{nb_moyenne}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="43" height="30" uuid="ab36b9b5-aca0-4b74-91ad-1253694169a9"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{nb_moy}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="moyenne" height="30">
+					<bucket class="java.lang.Double">
+						<bucketExpression><![CDATA[$F{moyenne}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents>
+							<textField pattern="###00.00">
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="43" height="30" uuid="08f15d8c-395d-4e38-a803-b27a419a66c4"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{moyenne}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<columnGroup name="pourcentage" height="30">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{pourcentage_reuss}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="43" height="30" uuid="f646d56a-67a9-4bf8-9e7d-6f48d6ce2e81"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{pourcentage}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents/>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="intituleModMeasure" class="java.lang.Integer" calculation="Count">
+					<measureExpression><![CDATA[$F{intituleMod}]]></measureExpression>
+				</measure>
+				<crosstabCell width="43" height="0">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell height="25" rowTotalGroup="intituleMod">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="8d639d99-45f0-491a-bd94-800d0faf26e5"/>
+							<textFieldExpression><![CDATA[$V{intituleModMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="50" columnTotalGroup="intituleMod1">
+					<cellContents backcolor="#005FB3" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF" uuid="2fdeb666-1fb7-4c29-af17-fe0fa42016f8"/>
+							<textFieldExpression><![CDATA[$V{intituleModMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="intituleMod" columnTotalGroup="intituleMod1">
+					<cellContents backcolor="#005FB3" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF" uuid="b3e8e674-da7e-43bb-b88a-02e020222b36"/>
+							<textFieldExpression><![CDATA[$V{intituleModMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="50" columnTotalGroup="lib">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="b6eccef2-f8e0-4f95-b5fd-9a11b25debfc"/>
+							<textFieldExpression><![CDATA[$V{intituleModMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="intituleMod" columnTotalGroup="lib">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="a9d541e8-0b60-42ba-8378-1627b3cf342c"/>
+							<textFieldExpression><![CDATA[$V{intituleModMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell columnTotalGroup="typ_ev">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="intituleMod" columnTotalGroup="typ_ev">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell columnTotalGroup="effectif">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="intituleMod" columnTotalGroup="effectif">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell columnTotalGroup="nb_moy">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="intituleMod" columnTotalGroup="nb_moy">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell columnTotalGroup="moyenne">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="intituleMod" columnTotalGroup="moyenne">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell columnTotalGroup="pourcentage">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="intituleMod" columnTotalGroup="pourcentage">
+					<cellContents/>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>
