@@ -5,5 +5,5 @@ import com.king.Bibliotheque.Models.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BooksRepository extends JpaRepository<Books, Integer> {
-    Books findByIsbn(String isbn);
+    Books findById(String id);
 }

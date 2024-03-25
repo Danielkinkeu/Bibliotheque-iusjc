@@ -4,29 +4,53 @@ import com.king.Bibliotheque.Models.Books;
 import com.king.Bibliotheque.Models.Category;
 import com.king.Bibliotheque.Services.BooksService;
 import lombok.AllArgsConstructor;
+import org.springframework.core.io.Resource;
+import com.king.Bibliotheque.ResponseData;
 import lombok.NoArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
 @RestController
 @RequestMapping(path = "books")
 @AllArgsConstructor
 public class BooksController {
-    private static final Logger LOG = LoggerFactory.getLogger(BooksController.class);
-    private final  BooksService booksService;
+    private BooksService booksService;
 
-    @ResponseStatus(value = HttpStatus.CREATED)
-    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public void addBooks(@ModelAttribute Books book){
-        LOG.debug("Adding document");
-        this.booksService.addBooks(book);
-        LOG.debug("document Added");
+    @PostMapping("")
+    public ResponseData uploadFile(@RequestParam("file")MultipartFile file, @RequestBody Books book) throws Exception {
+        Books attachment = null;
+        String downloadURl = "";
+        attachment = booksService.saveAttachment(file,book);
+        downloadURl = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/download/")
+                .path(attachment.getId())
+                .toUriString();
+
+        return new ResponseData(attachment.getTitle(),
+                downloadURl,
+                file.getContentType(),
+                file.getSize());
+    }
+
+    @GetMapping("/{fileId}")
+    public ResponseEntity<Resource> downloadFile(@PathVariable String fileId) throws Exception {
+        Books attachment = null;
+        attachment = booksService.getAttachment(fileId);
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(attachment.getFileType()))
+                .header(HttpHeaders.CONTENT_DISPOSITION,
+                        "attachment; filename=\"" + attachment.getTitle()
+                                + "\"")
+                .body(new ByteArrayResource(attachment.getData()));
+
     }
 }
