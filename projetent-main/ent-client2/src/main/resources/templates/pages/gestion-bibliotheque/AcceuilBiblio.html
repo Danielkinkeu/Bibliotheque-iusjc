@@ -4,6 +4,8 @@
 <head>
     <!-- Required meta tags -->
     <th:block th:replace="./fragments/_head.html::head"></th:block>
+    <link rel="stylesheet" href="/templates/pages/gestion-bibliotheque/theme.css">
+
 
 </head>
 <body>
@@ -45,16 +47,16 @@
                     <div class="col-md-12 grid-margin">
                         <div class="row">
                             <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                                <h3 class="font-weight-bold">Welcome <span th:text="${session.name}"></span></h3>
-                                </div>
+                                <h3 class="font-weight-bold">Welcome <span th:text="${session.name}"></span> to IUSJC LIBRARY</h3>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4 grid-margin stretch-card">
                         <div class="card tale-bg">
-                            <div class="card-people mt-auto" width="20px">
-                                <img src="../../images/dashboard/Scrum board-amico.png" alt="people" >
+                            <div class="card-people mt-auto" width="50px">
+                                <img src="../../images/gardebiblio.jpg" alt="people" >
                             </div>
                         </div>
                     </div>
@@ -79,19 +81,12 @@
                             <div class="col-md-6 mb-4 stretch-card transparent">
                                 <div class="card card-dark-blue">
                                     <div class="card-body">
-                                        <p class="mb-4">Livres empruntés/p>
+                                        <p class="mb-4">Livres empruntés</p>
                                         <p class="fs-30 mb-2" th:text="${nbenseignant}">61344</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-4 stretch-card transparent">
-                                <div class="card card-dark-blue">
-                                    <div class="card-body">
-                                        <p class="mb-4">Total utilisateurs</p>
-                                        <p class="fs-30 mb-2" th:text="${nbenseignant}">61344</p>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <div class="col-md-5 grid-margin stretch-card" th:if="${session.authorithies[0].authority =='Etudiant' }">
@@ -183,7 +178,7 @@
 
 
             <!-- Modal for modlanotes  -->
-            <th:block th:replace="./fragments/_modalsNotes.html::modalsNotes"></th:block>
+            <th:block th:replace="./fragments/_modalsBibliotheque.html::modalsBibliotheque"></th:block>
 
             <!-- End Modal for  moadlnotes  -->
 

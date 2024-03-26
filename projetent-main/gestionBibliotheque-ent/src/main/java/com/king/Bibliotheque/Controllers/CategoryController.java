@@ -9,7 +9,7 @@ import java.util.List;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping(path = "category")
+//@RequestMapping(path = "category")
 public class CategoryController {
     private CategoryService categoryService;
 
@@ -22,7 +22,7 @@ public class CategoryController {
     public void addCategory(@RequestBody Category category){
         this.categoryService.addCategory(category);
     }
-    @GetMapping(path = "/", produces = APPLICATION_JSON_VALUE)
+    @GetMapping(path = "category", produces = APPLICATION_JSON_VALUE)
     public List<Category> getCategory(){
         return this.categoryService.search();
     }

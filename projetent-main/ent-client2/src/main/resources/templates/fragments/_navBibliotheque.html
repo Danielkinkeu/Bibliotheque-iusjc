@@ -11,82 +11,93 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{gestionnote}">
+                <a class="nav-link" th:href="@{gestionbibliotheque}">
                     <i class="icon-grid menu-icon"></i>
                     <span class="menu-title">Dashboard</span>
                 </a>
             </li>
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" th:href="@{listelivresetu}">-->
+<!--                    <i class="icon-grid menu-icon"></i>-->
+<!--                    <span class="menu-title">look</span>-->
+<!--                </a>-->
+<!--            </li>-->
+
+
             <li class="nav-item">
-                <a class="nav-link" th:if="${session.authorithies[0].authority =='Etudiant' }" th:href="@{profil}">
-                    <i class="bi bi-people-fill menu-icon"></i>
-                    <span class="menu-title">Mon Profil</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:if="${session.authorithies[0].authority =='Etudiant' }" th:href="@{parcours}"  >
-                    <i class="bi bi-list-columns-reverse menu-icon"></i>
-                    <span class="menu-title">Mon Parcours </span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <span class="app">Books</span>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#certs" aria-expanded="false" aria-controls="ui-basic">
+                <a class="nav-link" data-toggle="collapse" href="#certss" aria-expanded="false" aria-controls="ui-basic"th:if="${session.authorithies[0].authority =='Admin' }">
                     <i class="icon-layout menu-icon"></i>
-                    <span class="menu-title">Manage Category</span>
+                    <span class="menu-title">Gestion des livres</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="certss">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" th:href="@{Addbook}">ajouter  des livres</a></li>
+                        <li class="nav-item"> <a class="nav-link" th:href="@{Listelivres}"> voir les livres</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#certs" aria-expanded="false" aria-controls="ui-basic"th:if="${session.authorithies[0].authority =='Admin' }">
+                    <i class="icon-layout menu-icon"></i>
+                    <span class="menu-title">Gestion des categories</span>
                     <i class="menu-arrow"></i>
                 </a>
                 <div class="collapse" id="certs">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#pvModal">add category</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#pvSynModal"> view category</a></li>
+                        <li class="nav-item"> <a class="nav-link" th:href="@{Addcategory}">ajout de la categorie</a></li>
+                        <li class="nav-item"> <a class="nav-link" th:href="@{Listecategory}"> voir la categorie</a></li>
                        </ul>
                 </div>
             </li>
 
             <li class="nav-item" >
-                <a class="nav-link" data-toggle="collapse" href="#cert" aria-expanded="false" aria-controls="ui-basic">
+                <a class="nav-link" data-toggle="collapse" href="#cert" aria-expanded="false" aria-controls="ui-basic"th:if="${session.authorithies[0].authority =='Admin' }">
                     <i class="bi bi-file-check-fill menu-icon"></i>
-                    <span class="menu-title" >Manage place</span>
+                    <span class="menu-title" >Gestion des emplacements</span>
                     <i class="menu-arrow"></i>
                 </a>
                 <div class="collapse" id="cert">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#AttestationModal" th:if="${session.authorithies[0].authority =='Admin' }">add place </a></li>
-                        <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#CertModal">view place</a></li>
+                        <li class="nav-item"> <a class="nav-link" th:href="@{Addplace}" th:if="${session.authorithies[0].authority =='Admin' }">ajouter l'emplacement</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#CertModal">voir l'emplacement</a></li>
                     </ul>
                 </div>
             </li>
 
-            <li class="nav-item" th:if="${session.authorithies[0].authority =='Admin' }">
-                <a class="nav-link" data-toggle="collapse" href="#etudiant" aria-expanded="false" aria-controls="ui-basic">
-                    <i class="bi bi-people-fill menu-icon"></i>
-                    <span class="menu-title">Manage Users</span>
+
+
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#docu" aria-expanded="false" aria-controls="ui-basic"th:if="${session.authorithies[0].authority =='Admin' }">
+                    <i class="icon-file menu-icon"></i>
+                    <span class="menu-title">Gestion des emprunts</span>
                     <i class="menu-arrow"></i>
                 </a>
-                <div class="collapse" id="etudiant">
+                <div class="collapse" id="docus">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#carteModal">add users</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#classeModal">view users</a></li>
-
+                        <li class="nav-item"> <a class="nav-link" href="ListeOuvre.html" >Liste des Ouvrages </a></li>
+                        <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#requete">Faire un Emprunt</a></li>
                     </ul>
                 </div>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#pv" aria-expanded="false" aria-controls="ui-basic">
-                    <i class="icon-layout menu-icon"></i>
-                    <span class="menu-title">Manage Loan</span>
+                <a class="nav-link" th:href="@{Listelivresetu}" th:if="${session.authorithies[0].authority !='Admin' }">
+                    <i class="icon-file menu-icon"></i>
+                    <span class="menu-title">Bibliotheque</span>
+                </a>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#docu" aria-expanded="false" aria-controls="ui-basic"th:if="${session.authorithies[0].authority !='Admin' }">
+                    <i class="icon-file menu-icon"></i>
+                    <span class="menu-title">Listes des emprunts</span>
                     <i class="menu-arrow"></i>
                 </a>
-                <div class="collapse" id="pv">
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#pvModal">pret en cours </a></li>
-                        <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#pvSynModal"> Pret expire</a></li>
-                       </ul>
-                </div>
+
             </li>
+
 
         </ul>
     </nav>

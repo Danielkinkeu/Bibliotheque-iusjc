@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <!-- Required meta tags -->
+      <th:block th:replace="fragments/_head.html::head"></th:block>
+  </head>
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+      <header>
+          <th:block th:replace="fragments/_header.html::header"></th:block>
+      </header>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_settings-panel.html -->
+      <div class="theme-setting-wrapper">
+        <div id="settings-trigger"><i class="ti-settings"></i></div>
+        <div id="theme-settings" class="settings-panel">
+          <i class="settings-close ti-close"></i>
+          <p class="settings-heading">SIDEBAR SKINS</p>
+          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
+          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
+          <p class="settings-heading mt-2">HEADER SKINS</p>
+          <div class="color-tiles mx-0 px-4">
+            <div class="tiles success"></div>
+            <div class="tiles warning"></div>
+            <div class="tiles danger"></div>
+            <div class="tiles info"></div>
+            <div class="tiles dark"></div>
+            <div class="tiles default"></div>
+          </div>
+        </div>
+      </div>
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+        <th:block th:replace="fragments/_navNotes.html::navNotes"></th:block>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+             
+            <div class="row">
+                <div class="col-md-11 grid-margin stretch-card">
+                    <div class="card position-relative">
+                        <div class="card-body">
+                            <div 
+                                class="carousel slide detailed-report-carousel position-static pt-2"
+                                data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="row">
+                                          <div class="col-md-11 col-xl-3 d-flex flex-column justify-content-start">
+                                            <div class="ml-xl-4 mt-3">
+                                              <span style="text-align: left; font-size:larger"; ><h3> Mon Profil </h3></span>
+                                              
+                                             <div class="d-flex">
+                                              <img th:src="@{../../images/faces/face27.jpg}" alt="user" style=" width: 173px;height: 172px; border-radius: 200px; margin-left: 6px; margin-top: 19px;">
+                                             </div>
+                                             </div>  
+                                             </div>
+                                            <div class="col-md-12 col-xl-9">
+                                                <div class="row">
+                                                    <div class="col-md-6 ">
+                                                        <div>
+                                                            <table class="table table-borderless report-table">
+                                                                <tr>
+                                                                    <td class="text-muted">Nom </td>
+                                                                    <td>
+                                                                        <h5  class="font-weight-bold mb-0" th:text="${session.name}">Ateba
+                                                                            Jean</h5>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                  <td class="text-muted">Matricule </td>
+                                                                  <td>
+                                                                      <h5 class="font-weight-bold mb-0" th:text="${session.matricule}">1920i45
+                                                                      </h5>
+                                                                  </td>
+                                                              </tr>
+                                                                <tr>
+                                                                    <td class="text-muted" >Niveau Actuel </td>
+                                                                    <td>
+                                                                        <h5 class="font-weight-bold mb-0" >
+                                                                            Ingénieur 1</h5>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-muted" >E-mail </td>
+                                                                    <td>
+                                                                        <h5 class="font-weight-bold mb-0" th:text="${session.email}">
+                                                                            JeanB@gmail.com</h5>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-muted">Date de Naissance
+                                                                    </td>
+                                                                    <td>
+                                                                        <h5 class="font-weight-bold mb-0" >
+                                                                            23/01/2001</h5>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-muted">Lieux de Naissance
+                                                                    </td>
+                                                                    <td>
+                                                                        <h5 class="font-weight-bold mb-0">
+                                                                            Bertoua</h5>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-muted" >Téléphone </td>
+                                                                    <td>
+                                                                        <h5 class="font-weight-bold mb-0" >
+                                                                            69792</h5>
+                                                                    </td>
+                                                                </tr>
+
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                      
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+          <!-- content-wrapper ends -->
+
+   <!-- Modals modalnotes-->
+
+          <th:block th:replace="fragments/_modalsNotes.html::modalsNotes"></th:block>
+  <!-- End Modals modalnotes -->
+
+        <!-- partial:partials/_footer.html -->
+         <footer class="footer">
+             <th:block th:replace="fragments/_footer.html::footer"></th:block>
+         </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <!-- plugins:js -->
+  <th:block th:replace="fragments/_js.html::js"></th:block>
+  <!--End custom js for this page-->
+</body>
+
+</html>
+

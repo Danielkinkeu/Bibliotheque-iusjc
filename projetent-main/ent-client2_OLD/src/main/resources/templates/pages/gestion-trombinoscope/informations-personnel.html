@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Gestion de Trombinoscope</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../vendors/feather/feather.css">
+    <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link href="../../vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../vendors/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" type="../../text/css" href="js/select.dataTables.min.css">
+    <link rel="stylesheet" href="/template/pages/gestion-trombinoscope/tombi.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin
+    <!-- endinject -->
+    <link rel="shortcut icon" href="../../images/favicon.png" />
+  </head>
+
+<body>
+<head>
+  <!-- Required meta tags -->
+  <th:block th:replace="fragments/_head.html::head"></th:block>
+  <!--  <th:block th:replace="fragments/_modalsIntervention.html::modalsIntervention"></th:block>-->
+
+</head>
+<div class="container-scroller">
+
+  <!--_header-->
+  <th:block th:replace="/fragments/_header.html::header"></th:block>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_settings-panel.html -->
+      <div class="theme-setting-wrapper">
+        <div id="settings-trigger"><i class="ti-settings"></i></div>
+        <div id="theme-settings" class="settings-panel">
+          <i class="settings-close ti-close"></i>
+          <p class="settings-heading">SIDEBAR SKINS</p>
+          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
+          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
+          <p class="settings-heading mt-2">HEADER SKINS</p>
+          <div class="color-tiles mx-0 px-4">
+            <div class="tiles success"></div>
+            <div class="tiles warning"></div>
+            <div class="tiles danger"></div>
+            <div class="tiles info"></div>
+            <div class="tiles dark"></div>
+            <div class="tiles default"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+      <th:block th:replace="/fragments/_navTrombinoscope.html::navTrombinoscope"></th:block>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="container">
+            <div class="main-body">         
+                  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 gutters-sm">
+                    <div class="col mb-3">
+                      <div class="card">
+                        <img src="https://via.placeholder.com/340x120/FFB6C1/000000" alt="Cover" class="card-img-top">
+                        <div class="card-body text-center">
+                          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" style="width:100px;margin-top:-65px" alt="User" class="img-fluid img-thumbnail rounded-circle border-0 mb-3">
+                          <h5 class="card-title">TAGNE Elohim</h5>
+                          <p class="text-secondary mb-1">Full Stack Developer</p>
+                          <p class="text-muted font-size-sm">Eyang, Cameroun</p>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 text-center mt-4 mt-sm-5">
+                <ul class="pagination justify-content-center mb-0">
+                    <li class="page-item disabled"> <span class="page-link">Prev</span> </li>
+                    <li class="page-item active" aria-current="page"><span class="page-link">1 </span> <span class="sr-only">(current)</span></li>
+                    <li class="page-item"> <a class="page-link" href="#">Next</a> </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2022.  Client Web ING4-ISI <a href="https://www.institutsaintjean.org/" target="_blank">ISJ-ENT.</a> All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+
+  
+
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script src="../../vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="../../js/off-canvas.js"></script>
+  <script src="../../js/hoverable-collapse.js"></script>
+  <script src="../../js/template.js"></script>
+  <script src="../../js/settings.js"></script>
+  <script src="../../js/todolist.js"></script>
+  
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <!-- End custom js for this page-->
+
+
+
+ <!-- plugins:js -->
+ <!-- endinject -->
+ <!-- Plugin js for this page -->
+ <script src="../../vendors/chart.js/Chart.min.js"></script>
+ <script src="../../vendors/datatables.net/jquery.dataTables.js"></script>
+ <script src="../../vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+ <script src="js/dataTables.select.min.js"></script>
+
+ <!-- endinject -->
+ <!-- Custom js for this page-->
+ <script src="../../js/dashboard.js"></script>
+ <script src="../../js/Chart.roundedBarCharts.js"></script>
+
+
+</body>
+
+</html>

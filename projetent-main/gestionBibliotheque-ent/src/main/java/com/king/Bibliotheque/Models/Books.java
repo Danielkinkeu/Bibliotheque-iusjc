@@ -23,6 +23,9 @@ public class Books {
     private Date publicationDate;
     private String fileType;
     //private MultipartFile file;
+    @ManyToOne
+    @JoinColumn(name = "category_Id", referencedColumnName = "id")
+    private Category category;
 
     @Lob
     private byte[] data;

@@ -1,0 +1,365 @@
+<html xmlns:th="http://www.thymeleaf.org" >
+<th:block th:fragment="modalsNotes">
+
+    <!-- Modal for pv  synthése-->
+    <div class="modal fade" id="pvSynModal" tabindex="-1" aria-labelledby="pvSynModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pvSyn">Générer une synthése de PV</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                   
+                    <form  class="row justify-content-center gap-3" th:action="@{/imprimerPVSynthese}" th:method="post" th:object="${pvsynthese}">
+                        <div class="col-lg-12 row flex-column">
+                            <label for="classes" class="form-label">Sélectionner la classe</label>
+                            <select name="class" id="classes" class="form-select" th:field="*{codeClasse}">
+                                <option th:each="classe: ${classes}" th:value="${classe.code}" th:text="${classe.libelle}">INGE 1 - Tronc commun</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <label for="anneeacademiques" class="form-label">Sélectionner l'année académique</label>
+                            <select name="year" id="anneeacademiques" class="form-select" th:field="*{dateString}">
+                                <option value=""th:each="anneeAcademique: ${anneeacademiques}" th:value="${anneeAcademique.dateDebut}" th:text="${anneeAcademique.libelle}">2022 - 2023</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <label for="creditsMinAdmission" class="form-label">Credits Min pour Admission</label>
+                            <input name="creditsMinAdmission" type="text" class="form-control" id="creditsMinAdmission" th:field="*{creditsMinAdmission}" value="">
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <label for="mgpMinAdmission" class="form-label">MGP Min pour Admission</label>
+                                <input name="mgpMinAdmission" type="text" class="form-control" id="mgpMinAdmission" th:field="*{mgpMinAdmission}" value="">
+
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <label for="nbAnneesCursus" class="form-label">Nombre Années Cursus</label>
+                                <input name="nbAnneesCursus" type="text" class="form-control" id="nbAnneesCursus" th:field="*{nbAnneesCursus}" value="">
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <label for="dateJury" class="form-label">Date Jury</label>
+                            <input name="dateJury" enable="false" type="text" class="form-control" id="dateJury" value="" th:field="*{dateJury}">
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                                <label for="imprimerAttestations" class="form-label">  Imprimer attestations ? </label>
+                                <input class="form-check-input" th:selected="false" th:checked="true" type="checkbox" name="imprimerAttestations" th:field="*{imprimerAttestations}" id="imprimerAttestations" value="imprimerAttestations">
+                        </div>
+
+<!--                        <div class="col-lg-12 row">-->
+<!--                            <div class="col-lg-6">-->
+<!--                                <div class="form-check">-->
+<!--                                    <label for="imprimerAttestations" class="form-check-label">Imprimer attestations ?</label>-->
+<!--                                    <input class="form-check-input" th:selected="false" th:checked="true" type="checkbox" name="imprimerAttestations"-->
+<!--                                           th:field="*{imprimerAttestations}" id="imprimerAttestations" value="imprimerAttestations"-->
+<!--                                    >-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="row mb-3">-->
+<!--                                <label for="dateJury" class="form-label">Date Jury</label>-->
+<!--                                <div class="col-md-8 col-lg-9">-->
+<!--                                    <input name="dateJury" enable="false" type="text" class="form-control" id="dateJury" value="" th:field="*{dateJury}">-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Imprimer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal for PV synthése -->
+    <!--Fait-->
+
+ <!-- Modal Certificat de scolarité-->
+    <div class="modal fade" id="CertModal" tabindex="-1" aria-labelledby="CertModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modaltitle">Demandez un Certificat de scolarité  </h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form  class="row justify-content-center" th:action="@{/imprimercertificat}" th:method="post" th:object="${releve}">
+                        <div class="row mb-3" th:if="${session.authorithies[0].authority =='Admin' }" >
+                            <label for="matricules" class="form-label">Matricule</label>
+                            <div class="col-md-8 col-lg-9">
+                                <input name="matricules" type="text" class="form-control" id="matricules" value="">
+                            </div>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <label for="class" class="form-label">Sélectionner la classe</label>
+                            <select name="class" id="class" class="form-select" th:field="*{codeClasse}">
+                                <option th:each="classe: ${classes}" th:value="${classe.code}" th:text="${classe.libelle}">INGE 1 - Tronc commun</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <label for="year" class="form-label">Sélectionner l'année académique</label>
+                            <select name="year" id="year" class="form-select" th:field="*{dateString}">
+                                <option value=""th:each="anneeAcademique: ${anneeacademiques}" th:value="${anneeAcademique.dateDebut}" th:text="${anneeAcademique.libelle}">2022 - 2023</option>
+                            </select>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Imprimer</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+   <!--Fin modal Certif scolarité-->
+
+    <!-- Modal for releve  -->
+    <div class="modal fade" id="RelevéModal" tabindex="-1" aria-labelledby="RelevéModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titre">Générer un Relevé </h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/imprimerreleve}" class="row justify-content-center gap-3" th:method="post" th:object="${releve}">
+
+                        <div class="col-lg-12 row flex-column" th:if="${session.authorithies[0].authority =='Admin' }" >
+                            <label for="year" class="form-label">Veuillez entrer votre nom & prénom</label>
+                            <input type="text" name= "cursus" id="nomreleve"  placeholder="Entrer votre nom & prénom" class="form-control" />
+                        </div>
+                        <div class="col-lg-12 row flex-column" th:if="${session.authorithies[0].authority =='Admin' }" >
+                            <label for="year" class="form-label">Veuillez entrer votre matricule</label>
+                            <input type="text" name= "cursus" id="matreleve"  placeholder="Entrer votre matricule" class="form-control" />
+                        </div>
+                        <div class="col-lg-12 row flex-column" >
+                            <label for="class" class="form-label">Sélectionner la classe</label>
+                            <select name="class" id="classe" class="form-select" th:field="*{codeClasse}">
+                                <option th:each="classe: ${classes}" th:value="${classe.code}" th:text="${classe.libelle}">INGE 1 - Tronc commun</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                                <label for="anneeacademiques2" class="form-label">Sélectionner l'année académique</label>
+                                <select name="year" id="anneeacademiques2" class="form-select" th:field="*{dateString}">
+                                    <option value=""th:each="anneeAcademique: ${anneeacademiques}" th:value="${anneeAcademique.dateDebut}" th:text="${anneeAcademique.libelle}">2022 - 2023</option>
+                                </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Imprimer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal for  releve  -->
+
+    <!-- Modal for attestation -->
+    <div class="modal fade" id="AttestationModal" tabindex="-1" aria-labelledby="AttestationModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-titleAttestation">Génerer une Attestation de Reussite</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" class="row justify-content-center" th:action="@{/imprimerDiplomeOuAttestation}" th:method="post" th:object="${attestationDiplome}">
+                        <div class="col-lg-12 row flex-column" >
+                            <label for="class" class="form-label">Sélectionner la classe</label>
+                            <select name="class" id="classAttestation" class="form-select" th:field="*{codeClasse}">
+                                <option th:each="classe: ${classes}" th:value="${classe.code}" th:text="${classe.libelle}">INGE 1 - Tronc commun</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <label for="year" class="form-label">Sélectionner l'année académique</label>
+                            <select name="year" id="yearAttestation" class="form-select" th:field="*{dateJury}">
+                                <option th:each="anneeAcademique: ${anneeacademiques}" th:value="${anneeAcademique.dateDebut}" th:text="${anneeAcademique.libelle}">2022 - 2023</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12 row">
+                            <div class="col-lg-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="type" th:field="*{typeEtat}" id="typeDiplome" value="diplome" checked>
+                                    <label for="typeDiplome" class="form-check-label">Diplôme</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="type" th:field="*{typeEtat}" id="typeAttestation" value="attestation">
+                                    <label for="typeAttestation" class="form-check-label">Attestation</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Imprimer</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+<!-- End Modal for attestation -->
+
+    <!-- Modal for absenses hours -->
+    <div class="modal fade" id="bilanAbsModal" tabindex="-1" aria-labelledby="bilanAbsModal" aria-hidden="true" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bilanAbseModal">Générer le  bilan d'absence</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" class="row justify-content-center" th:action="@{/imprimerFicheAbsence}" th:method="post" th:object="${ficheAbsence}">
+                        <div class="col-lg-12 row flex-column">
+                            <label for="class" class="form-label">Sélectionner la classe</label>
+                            <select name="class" id="classAbsence" class="form-select" th:field="*{codeClasse}" >
+                                <option th:each="classe: ${classes}" th:value="${classe.code}" th:text="${classe.libelle}">INGE 1 - Tronc commun</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <label for="year" class="form-label">Sélectionner l'année académique</label>
+                            <select name="year" id="yearAbsence" class="form-select" th:field="*{debutAnneeAcademique}">
+                                <option value=""th:each="anneeAcademique: ${anneeacademiques}" th:value="${anneeAcademique.dateDebut}" th:text="${anneeAcademique.libelle}">2022 - 2023</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <label for="semester" class="form-label">Sélectionner le semestre</label>
+                            <select name="semester" id="semesterabs" class="form-select" th:field="*{semestre}">
+                                <option th:each="semestre: ${semestres}" th:value="${semestre.libelle}" th:text="${semestre.description}">2022 - 2023</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <div class="col-lg-12 row flex-column">
+                                <label for="datedeb" class="form-label">Date de Debut</label>
+                                <input type="date" name="datedeb" id="datedeb" class="form-control" th:field="*{dateDebut}">
+                            </div>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <div class="col-lg-12 row flex-column">
+                                <label for="datefin" class="form-label">Date de Fin</label>
+                                <input type="date" name="datefin" id="datefin" class="form-control" th:field="*{dateFin}">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Imprimer</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+<!-- End Modal for absenses hours -->
+
+    <!-- Modal for liste des étudiants -->
+  <div class="modal fade" id="classModal" tabindex="-1" aria-labelledby="classeModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="classeModal">Générer la liste des étudiants</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <input type="submit" class="btn btn-primary" value="Envoyer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal for liste des étudiants -->
+
+    <!-- Modal for pv -->
+    <div class="modal fade" id="pvModal" tabindex="-1" aria-labelledby="pvModal" aria-hidden="true" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pvModalPV">Générer un Procès Verbal</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form  class="row justify-content-center gap-3" th:action="@{/imprimerpv}" th:method="post" th:object="${pv}" >
+                        <div class="col-lg-12 row flex-column">
+                            <label for="class" class="form-label">Sélectionner la classe</label>
+                            <select name="class" id="classPV" class="form-select" th:field="*{codeClasse}">
+                                <option th:each="classe: ${classes}" th:value="${classe.code}" th:text="${classe.libelle}">INGE 1 - Tronc commun</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <label for="year" class="form-label">Sélectionner l'année académique</label>
+                            <select name="year" id="yearPV" class="form-select" th:field="*{annee}">
+                                <option value=""th:each="anneeAcademique: ${anneeacademiques}" th:value="${anneeAcademique.dateDebut}" th:text="${anneeAcademique.libelle}">2022 - 2023</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <label for="semester" class="form-label">Sélectionner le semestre</label>
+                            <select name="semester" id="semesterPV" class="form-select" th:field="*{semestre}">
+                                <option th:each="semestre: ${semestres}" th:value="${semestre.libelle}" th:text="${semestre.description}">2022 - 2023</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="typeExcel" th:field="*{typeEtat}" id="excel" value="excel" checked/>
+                                        Excel
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="typePDF"  th:field="*{typeEtat}" id="pdf" value="pdf"/>
+                                       PDF
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Imprimer</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Modal for PV -->
+
+    <!-- Modal for carte d'etudiant -->
+    <div class="modal fade" id="carteModal" tabindex="-1" aria-labelledby="carteModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-titlecarte">Générer les cartes d'etudiant </h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/Imprimercarte}" th:method="post" th:object="${carteEtudiant}" class="row justify-content-center gap-3">
+                        <div class="col-lg-12 row flex-column">
+                            <label for="class" class="form-label">Sélectionner la classe</label>
+                            <select name="class" id="classCatre" class="form-select" th:field="*{codeClasse}">
+                                <option th:each="classe: ${classes}" th:value="${classe.code}" th:text="${classe.libelle}">INGE 1 - Tronc commun</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12 row flex-column">
+                            <label for="year" class="form-label">Sélectionner l'année académique</label>
+                            <select name="year" id="yearcarte" class="form-select" th:field="*{annee}">
+                                <option value=""th:each="anneeAcademique: ${anneeacademiques}" th:value="${anneeAcademique.dateDebut}" th:text="${anneeAcademique.libelle}">2022 - 2023</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Imprimer</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End Modal for carte d'etudiant  -->
+
+</th:block>
+</html>

@@ -25,8 +25,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class BooksController {
     private BooksService booksService;
 
-    @PostMapping("")
+    @PostMapping()
     public ResponseData uploadFile(@RequestParam("file")MultipartFile file, @RequestBody Books book) throws Exception {
+        System.out.println("Upload"+ file);
+        System.out.println("books"+ book);
         Books attachment = null;
         String downloadURl = "";
         attachment = booksService.saveAttachment(file,book);

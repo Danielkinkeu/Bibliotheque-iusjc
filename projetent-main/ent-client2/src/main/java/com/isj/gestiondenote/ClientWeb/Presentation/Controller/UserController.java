@@ -88,11 +88,7 @@ public class UserController {
         ModalWithHttpHeader.model(model, session);
         return "layout/gestionNote/gestNote";
     }
-    @GetMapping("/gestionbibliotheque")
-    public String pageBibliotheque(Model model, HttpSession session){
-        ModalWithHttpHeader.model(model, session);
-        return "pages/gestion-bibliotheque/AcceuilBiblio";
-    }
+
 
     @GetMapping("/profil")
     public String pageProfileEtudiant(Model model,HttpSession session){

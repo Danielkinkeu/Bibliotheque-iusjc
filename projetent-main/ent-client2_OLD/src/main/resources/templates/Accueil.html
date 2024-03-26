@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <!-- Required meta tags -->
+    <th:block th:replace="fragments/_head.html::head"></th:block>
+</head>
+<body>
+<div class="container-scroller">
+    <header>
+        <th:block th:replace="fragments/_header.html::header"></th:block>
+    </header>
+    <div class="main-panel w-auto mt-5">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="card tale-bg">
+                    <div class="card-body d-flex gap-lg-5 justify-content-around" >
+                        <div class="Heading pt-5 mt-lg-5">
+                            <h1 class="Heading-primary"> Bienvenue sur l'ENT de l'IUSJC <br></h1>
+                            <h3 th:text="${session.name}"></h3>
+                            <span class="Heading-second">Votre espace numérique de travail vous permet d'avoir accès à toutes les applications liées à l'Institut.
+                                 Nous vous facilitons la vie !</span>
+                        </div>
+                        <div class="imageboys justify-content-end">
+                            <img th:src="@{/images/dashboard/boys.png}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-4 text-center" >
+                <h3> Vos différentes Applications</h3>
+            </div>
+            <div class="row">
+                <div class="col-md-3 grid-margin stretch-card ">
+                    <div class="card card-special">
+                        <div class="card-body">
+                            <div class="back-icon p-2 mb-3">
+                                <i class="bi bi-bookmark-x-fill" style="color:#4b49ac ; "></i>
+                            </div>
+                            <div class="heading mb-3" >
+                                <div class="card-title" th:if="${session.authorithies[0].authority =='Etudiant' }" >
+                                    <span> Notes</span>
+                                </div>
+                                <div class="card-title" th:if="${session.authorithies[0].authority =='Admin' }" >
+                                    Gestion <br><span> des Notes</span>
+                                </div>
+                                <div class="description">
+                                    <p class="color-light">Cliquez sur la fleche pour avoir accès à toutes les options de l'application de gestion des notes  </p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <a th:href="@{gestionnote}" class="val"> Imprimez votre relevé ici <i class="bi bi-arrow-right" style="font-size:18px;"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-3 grid-margin stretch-card">
+                    <div class="card card-special">
+                        <div class="card-body">
+                            <div class="back-icon p-2 mb-3">
+                                <i class="bi bi-book-fill" style="color:#4b49ac ; "></i>
+                            </div>
+                            <div class="heading mb-3">
+                                <div class="card-title" th:if="${session.authorithies[0].authority =='Etudiant' }">
+                                    <span> Documents</span>
+                                </div>
+                                <div class="card-title" th:if="${session.authorithies[0].authority =='Admin' }">
+                                    Gestion <br><span> des Documents</span>
+                                </div>
+                                <div class="description">
+                                    <p class="color-light">Cliquez sur la fleche pour avoir accès à tous les documents importants de l'institut</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <a th:href="@{gestionbibliotheque}" class="val"> Téléchargez votre document ici <i class="bi bi-arrow-right" style="font-size:18px;"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-3  grid-margin stretch-card ">
+                    <div class="card card-special">
+                        <div class="card-body">
+                            <div class="back-icon p-2 mb-3">
+                                <i class="bi bi-archive-fill" style="color:#4b49ac ; "></i>
+                            </div>
+                            <div class="heading mb-3">
+                                <div class="card-title" th:if="${session.authorithies[0].authority =='Admin' }">
+                                    Gestion <br><span> de la Bibliotheque</span>
+                                </div>
+                                <div class="card-title" th:if="${session.authorithies[0].authority =='Etudiant' }">
+                                    <span>Bibliotheque</span>
+                                </div>
+                                <div class="description">
+                                    <p class="color-light">cliquez sur la fleche pour avoir accès aux ouvrages et aux matériels mis à votre disposition par l'institut. </p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <a th:href="@{gestionbibliotheque}" class="val">Empruntez un livre ici <i class="bi bi-arrow-right" style="font-size:18px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3  grid-margin stretch-card ">
+                    <div class="card card-special">
+                        <div class="card-body">
+                            <div class="back-icon p-2 mb-3">
+                                <i class="bi bi-alarm-fill" style="color:#4b49ac ; "></i>
+                            </div>
+                            <div class="heading mb-3">
+                                <div class="card-title" th:if="${session.authorithies[0].authority =='Admin' }">
+                                    Gestion <br><span> des Horaires</span>
+                                </div>
+
+                                <div class="card-title" th:if="${session.authorithies[0].authority =='Etudiant' }">
+                                    <span> Horaires</span>
+                                </div>
+                                <div class="description">
+                                    <p class="color-light">Cliquez sur la fleche pour voir votre planning et toutes les informations sur vos horaires </p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <a th:href="@{/pages/gestion-horaires/dashboard-horaires.html}" class="val">Consultez votre plannig ici <i class="bi bi-arrow-right" style="font-size:18px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3  grid-margin stretch-card ">
+                    <div class="card card-special">
+                        <div class="card-body">
+                            <div class="back-icon p-2 mb-3">
+                                <i class="bi bi-file-bar-graph-fill" style="color:#4b49ac ; "></i>
+                            </div>
+                            <div class="heading mb-3">
+                                <div class="card-title" th:if="${session.authorithies[0].authority =='Etudiant' }">
+                                    <span>Interventions</span>
+                                </div>
+                                <div class="card-title" th:if="${session.authorithies[0].authority =='Admin' }">
+                                    Gestion des <br> <span>Interventions</span>
+                                </div>
+                                <div class="description">
+                                    <p class="color-light">Cliquez sur la fleche pour faire une demande ou alors consulter vos différentes interventions </p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <a th:href="@{gestionintervention}" th:if="${session.authorithies[0].authority == 'Admin'}" class="val">Liste des interventions ici <i class="bi bi-arrow-right" style="font-size:18px;"></i></a>
+                                <a th:href="@{gestionintervention}" th:if="${session.authorithies[0].authority == 'User'}" class="val">Demandez une intervention ici <i class="bi bi-arrow-right" style="font-size:18px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3  grid-margin stretch-card ">
+                    <div class="card card-special">
+                        <div class="card-body">
+                            <div class="back-icon p-2 mb-3">
+                                <i class="bi bi-messenger" style="color:#4b49ac ; "></i>
+                            </div>
+                            <div class="heading mb-3">
+                                <div class="card-title" th:if="${session.authorithies[0].authority =='Admin' }">
+                                    Gestion <br><span> de la messagerie</span>
+                                </div>
+                                <div class="card-title" th:if="${session.authorithies[0].authority =='Etudiant' }">
+                                    <span>Messagerie</span>
+                                </div>
+                                <div class="description">
+                                    <p class="color-light">Cliquez sur la fleche pour avoir accès à la messagerie de l'institut. </p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <a th:href="@{listeInterventionParDepartement}" class="val">Chattez ici <i class="bi bi-arrow-right" style="font-size:18px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3  grid-margin stretch-card ">
+                    <div class="card card-special">
+                        <div class="card-body">
+                            <div class="back-icon p-2 mb-3">
+                                <i class="bi bi-person-badge-fill" style="color:#4b49ac ; "></i>
+                            </div>
+                            <div class="heading mb-3">
+                                <div class="card-title mt-3" >
+                                    Trombinoscope</span>
+                                </div>
+                                <div class="description">
+                                    <p class="color-light">Cliquez sur la fleche pour voir les photos de tous les étudiants ainsi que le personnel </p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <a th:href="@{trombinoscope}" class="val">Découvrez vos cammarades ici <i class="bi bi-arrow-right" style="font-size:18px;"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <header>
+            <th:block th:replace="fragments/_footer.html::footer"></th:block>
+        </header>
+    </footer>
+</div>
+</div>
+</div>
+<!-- container-scroller -->
+
+<!-- plugins:js -->
+
+<th:block th:replace="fragments/_js.html::js"></th:block>
+
+<!-- End custom js for this page-->
+</body>
+</html>
