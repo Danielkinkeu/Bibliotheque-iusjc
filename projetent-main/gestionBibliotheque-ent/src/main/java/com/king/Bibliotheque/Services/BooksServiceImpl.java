@@ -1,6 +1,7 @@
 package com.king.Bibliotheque.Services;
 
 import com.king.Bibliotheque.Models.Books;
+import com.king.Bibliotheque.Models.Category;
 import com.king.Bibliotheque.Repositories.BooksRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
+import java.util.List;
 
 @AllArgsConstructor
 @Service
@@ -41,6 +43,10 @@ public class BooksServiceImpl implements BooksService{
                 .findById(fileId);
                 //.orElseThrow(
                   //      () -> new Exception("File not found with Id: " + fileId));
+    }
+
+    public List<Books> search(){
+        return this.booksRepository.findAll();
     }
 
 }

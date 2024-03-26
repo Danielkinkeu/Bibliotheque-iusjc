@@ -229,26 +229,11 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>Pyhsics compu</td>
-                                            <td>Temgoau sephora</td>
-                                            <td>2011</td>
-                                            <td><label class="badge badge-danger">Emprunter</label></td>
-                                            <td>
-                                                <div class="icon d-flex gap-lg-2 ">
-                                                    <div>
-                                                        <button type="button" class="btn btn-primary btn-rounded btn-icon btn-lg " onclick="window.location.href = '../gestDocuments/deatailsDoc.html';" >
-                                                            <i class="icon-circle-plus" ></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Pyhsics compu</td>
-                                            <td>Temgoau sephora</td>
-                                            <td>2010</td>
-                                            <td><label class="badge badge-success">Disponible</label></td>
+                                        <tr th:each="book:${book}">
+                                            <td th:text="${book.title}" ></td>
+                                            <td th:text="${book.authorName}" ></td>
+                                            <td th:text="${book.publicationDate}" ></td>
+                                            <td><label class="badge badge-danger">Disponible</label></td>
                                             <td>
                                                 <div class="icon d-flex gap-lg-2 ">
                                                     <div>

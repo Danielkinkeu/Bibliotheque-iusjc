@@ -22,17 +22,28 @@ public class BiblioController {
     }
 
     @GetMapping("/Listelivres")
-    public String listelivres(Model model, HttpSession session){
+    public ModelAndView listelivre(Model model, HttpSession session) {
         ModalWithHttpHeader.model(model, session);
         Modal.model(model);
-        return "pages/gestion-bibliotheque/book";
+        String accessToken = (String) session.getAttribute("access_token");
+        model.addAttribute("accessToken", accessToken);
+        RestTemplate restTemplate = new RestTemplate();
+        Object[] book = restTemplate.getForObject(URL.BASE_URL_BIBLIO+"book", Object[].class);
+        model.addAttribute("book", book);
+        return new ModelAndView("pages/gestion-bibliotheque/book");
     }
-    @GetMapping("/Listecategorys_old")
-    public String listecategorys(Model model, HttpSession session){
+    @GetMapping("/Listelivresetu")
+    public ModelAndView listelivretu(Model model, HttpSession session) {
         ModalWithHttpHeader.model(model, session);
         Modal.model(model);
-        return "pages/gestion-bibliotheque/viewcategory";
+        String accessToken = (String) session.getAttribute("access_token");
+        model.addAttribute("accessToken", accessToken);
+        RestTemplate restTemplate = new RestTemplate();
+        Object[] book = restTemplate.getForObject(URL.BASE_URL_BIBLIO+"book", Object[].class);
+        model.addAttribute("book", book);
+        return new ModelAndView("pages/gestion-bibliotheque/biblioetudiant");
     }
+
     @GetMapping("/Listecategory")
     public ModelAndView listecategory(Model model, HttpSession session) {
         ModalWithHttpHeader.model(model, session);
@@ -44,12 +55,7 @@ public class BiblioController {
         model.addAttribute("category", category);
         return new ModelAndView("pages/gestion-bibliotheque/viewcategory");
     }
-    @GetMapping("/Listelivresetu")
-    public String listelivresetu(Model model, HttpSession session){
-        ModalWithHttpHeader.model(model, session);
-        Modal.model(model);
-        return "pages/gestion-bibliotheque/biblioetudiant";
-    }
+   
     @GetMapping("/Addbook")
     public String addbook(Model model, HttpSession session){
         ModalWithHttpHeader.model(model, session);

@@ -68,26 +68,14 @@
                 <div class="container">
                     <div class="main-body">
                         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 gutters-sm">
-                            <div class="col mb-3">
+                             <div class="col mb-3" th:each="book:${book}">
                                 <div class="card">
                                     <img src="../../images/biblio.jpg" alt="Cover" class="card-img-top">
                                     <div class="card-body text-center">
 
-                                        <h5 class="card-title">physiques</h5>
+                                        <h5 class="card-title" th:text="${book.title}" ></h5>
                                         <p class="text-secondary mb-1">livres de physiques</p>
-                                        <p class="text-muted font-size-sm">auteur</p>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="col mb-3">
-                                <div class="card">
-                                    <img src="../../images/biblio.jpg" alt="Cover" class="card-img-top">
-                                    <div class="card-body text-center">
-
-                                        <h5 class="card-title">physiques</h5>
-                                        <p class="text-secondary mb-1">livres de physiques</p>
-                                        <p class="text-muted font-size-sm">auteur</p>
+                                        <p class="text-muted font-size-sm" th:text="${book.authorName}" >auteur</p>
                                     </div>
 
                                 </div>

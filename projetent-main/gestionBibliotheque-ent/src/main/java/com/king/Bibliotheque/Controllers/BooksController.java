@@ -18,9 +18,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.util.List;
+
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 
 @RestController
-@RequestMapping(path = "books")
+//@RequestMapping(path = "books")
 @AllArgsConstructor
 public class BooksController {
     private BooksService booksService;
@@ -54,5 +58,10 @@ public class BooksController {
                                 + "\"")
                 .body(new ByteArrayResource(attachment.getData()));
 
+    }
+
+    @GetMapping(path = "book", produces = APPLICATION_JSON_VALUE)
+    public List<Books> getBooks(){
+        return this.booksService.search();
     }
 }
