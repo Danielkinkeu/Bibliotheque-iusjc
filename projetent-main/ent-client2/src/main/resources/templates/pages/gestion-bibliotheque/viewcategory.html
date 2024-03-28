@@ -235,9 +235,8 @@
                                             <td>
                                                 <div class="icon d-flex gap-lg-2 ">
                                                     <div>
-                                                        <button type="button" class="btn btn-primary btn-rounded btn-icon btn-lg " onclick="window.location.href = '../gestDocuments/deatailsDoc.html';" >
-                                                            <i class="icon-circle-plus" ></i>
-                                                        </button>
+                                                        <a class="btn btn-primary btn-rounded btn-icon btn-lg "  th:href="@{deletecategory/{id}(id=${categorie.id})}" > <i class="icon-circle-plus" ></i></a>
+
                                                     </div>
                                                 </div>
                                             </td>

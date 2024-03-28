@@ -27,6 +27,10 @@ public class Books {
     @JoinColumn(name = "category_Id", referencedColumnName = "id")
     private Category category;
 
+    @ManyToOne
+    @JoinColumn(name = "place_Id", referencedColumnName = "id")
+    private Place place;
+
     @Lob
     private byte[] data;
     public Books(String title, String authorName, String edition, Date publicationDate, String fileType, byte[] data) {

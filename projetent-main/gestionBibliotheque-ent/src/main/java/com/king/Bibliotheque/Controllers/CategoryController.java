@@ -18,7 +18,7 @@ public class CategoryController {
     }
 
     @ResponseStatus(value = HttpStatus.CREATED)
-    @PostMapping(consumes = APPLICATION_JSON_VALUE)
+    @PostMapping(path = "addCategory", consumes = APPLICATION_JSON_VALUE)
     public void addCategory(@RequestBody Category category){
         this.categoryService.addCategory(category);
     }
@@ -35,9 +35,9 @@ public class CategoryController {
     @PutMapping(path = "{id}" ,consumes = APPLICATION_JSON_VALUE)
     public Category updateCategory(@PathVariable int id, @RequestBody Category updatedCategory) {
         return categoryService.updateCategoryDetails(id, updatedCategory);
-    }
+    }=
 
-    @DeleteMapping(path = "{id}")
+    @DeleteMapping(path = "category/delete/{id}")
     public void deleteCategory(@PathVariable int id) {
         categoryService.deleteCategory(id);
     }

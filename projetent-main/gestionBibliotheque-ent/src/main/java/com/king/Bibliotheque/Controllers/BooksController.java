@@ -64,4 +64,15 @@ public class BooksController {
     public List<Books> getBooks(){
         return this.booksService.search();
     }
+
+    @GetMapping(path = "book/{id}", produces = APPLICATION_JSON_VALUE)
+    public Books getBookById(@PathVariable int id){
+        return this.booksService.getBookById(id);
+    }
+
+    @DeleteMapping(path = "book/delete/{id}")
+    public void deleteBook(@PathVariable int id) {
+        booksService.deleteBook(id);
+    }
+
 }
